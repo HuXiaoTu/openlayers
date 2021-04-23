@@ -6,26 +6,26 @@ import styleImport from 'vite-plugin-style-import'
 export default defineConfig({
   plugins: [
     vue(),
-    styleImport({
-      libs: [{
-        libraryName: 'element-plus',
-        esModule: true,
-        ensureStyleFile: true,
-        resolveStyle: (name) => {
-          name = name.slice(3)
-          return `element-plus/packages/theme-chalk/src/${name}.scss`;
-        },
-        resolveComponent: (name) => {
-          return `element-plus/lib/${name}`;
-        },
-      }]
-    })
+    // styleImport({
+    //   libs: [{
+    //     libraryName: 'element-plus',
+    //     esModule: true,
+    //     ensureStyleFile: true,
+    //     resolveStyle: (name) => {
+    //       name = name.slice(3)
+    //       return `element-plus/packages/theme-chalk/src/${name}.scss`;
+    //     },
+    //     resolveComponent: (name) => {
+    //       return `element-plus/lib/${name}`;
+    //     },
+    //   }]
+    // })
   ],
-  css:{
+  css: {
     preprocessorOptions: {
-       scss: {
-         additionalData: `@import "./src/assets/commonCss/commonSass.scss";`
-       }
-     }
+      scss: {
+        additionalData: `@import "./src/assets/commonCss/index.scss";`
+      }
+    }
   },
 })

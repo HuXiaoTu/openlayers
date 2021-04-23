@@ -1,16 +1,11 @@
-import { createRouter,createWebHistory} from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 // 路由信息
 const routes = [
     {
-        path: "/",
-        name: "index",
-        component:  () => import('../views/index.vue'),
-    },
-    {
-        path: "/home",
-        name: "home",
-        component:  () => import('../views/home.vue'),
+        path: "/staticDisplay",
+        name: "staticDisplay",
+        component: () => import('../views/staticDisplay/staticDisplay.vue'),
     },
 ];
 
