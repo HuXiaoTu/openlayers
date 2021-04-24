@@ -8,8 +8,12 @@ import LayerGroup from 'ol/layer/Group';
 import VectorLayer from 'ol/layer/Vector';
 import { Vector as VectorSource } from "ol/source";
 
+import { boundingExtent } from 'ol/extent';
+import { fromLonLat, transformExtent } from 'ol/proj';
+
 
 let map = null;
+let view = null;
 
 // 矢量图层
 export const VectorLayerShow = new VectorLayer({
@@ -51,6 +55,8 @@ export const dataOverlayGroup = new LayerGroup({
                 url:
                     'https://server.arcgisonline.com/ArcGIS/rest/services/' +
                     'World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+                // 解决图片跨域问题
+                crossOrigin: "Anonymous",
             }),
         })
     ]
@@ -90,16 +96,18 @@ export const initialMap = (target = '') => {
         projection: "EPSG:4326",
         target: 'mouse-position',
     });
+    let maxExtent = boundingExtent([[180, 85], [180, -85]]);
+    view = new View({
+        projection: 'EPSG:4326',                    // 投影类型
+        center: [100, 38],                          // 地图中心点经纬度
+        zoom: 5,                                    // 地图缩放级别         
+        minZoom: 3.5,
+        extent: fromLonLat(maxExtent, 'EPSG:4326')
+    })
 
     return map = new Map({
         layers: [dataOverlayGroup, dataOverlayDisplayGroup, dataOverlayDrawGroup],
-        view: new View({
-            projection: 'EPSG:4326',                    // 投影类型
-            center: [100, 38],                          // 地图中心点经纬度
-            zoom: 5,                                    // 地图缩放级别         
-            minZoom: 3
-            // maxZoom: 10,
-        }),
+        view,
         controls: [mousePositionControl],               // 插件导入
         target: 'mapBox'
     });
@@ -111,6 +119,12 @@ export const initialMap = (target = '') => {
 export const getCurrentMap = () => {
     return map;
 };
+/**
+ *获取当前view 
+ */
+export const getCurrentView = () => {
+    return view;
+};
 
 /**
 * @description 获取当前地图投影code
@@ -121,4 +135,24 @@ export function getCurrentProjCode(map) {
         return map.getView().getProjection().getCode();
     }
     return getCurrentMap().getView().getProjection().getCode();
+}
+
+/**
+* @description 清空 绘制图层数据
+*/
+export const clearMapDraw = () => {
+    let groupObj = map.getLayerGroup();
+    let groupList = groupObj.getLayers();
+    let groupArray = groupList.getArray();
+    // 循环所有 group
+    groupArray.forEach(ele => {
+        let name = ele.get('groupName');
+        // 跳过 底图 group
+        if (name === 'dataOverlayGroup') return;
+        let arr = ele.getLayersArray();
+        // 跳过空 group
+        if (arr.length === 0) return;
+        // 获取group 所有layer 执行 清空layer操作
+        arr.forEach(item => item.getSource().clear());
+    });
 }

@@ -1,29 +1,32 @@
 import { Feature } from "ol";
-import { LineString, Point } from "ol/geom";
+import { LineString, Point, Polygon } from "ol/geom";
 import { fromLonLat } from "ol/proj";
 import { Circle as CircleStyle, Fill, Stroke, Style, Text } from "ol/style";
 import CommonUtils from '../../../components/jsTool/CommonUtils.js';
 import { coordinate2Coordinate, getDeviationAngle } from '../../../components/jsTool/SymbolTool.js';
 import { getCurrentMap, getCurrentProjCode } from "../../../components/jsTool/mapTool.js";
 import FeatureTool from "../../../components/jsTool/FeatureTool.js";
-import GridValue from "./GridValue.js";
+import GridValue from "../../../components/jsTool/drawTool/GridValue.js";
 
 /**
- * @description 高空风温自动出图
+ * @description 绘制风温
  */
-export default class drawWind extends GridValue {
+
+export default class windTemperature extends GridValue {
     constructor() {
         super()
+        this.featureType = 'windTemperature';//设置类型
         this.roundSize = 0;//保留小数位数 0为整数
-        this.windPixelLength = 40;//风羽长度 数值大->出图稀疏，小->出图密集
         this.needMonitor = false;//是否需要自动抽析
+        //风的格点值要素名称后端统一为u v 
+        this.patternElementName = ['u', 'v', 't'];
     }
-    initFeatures(message, option = ['u', 'v', 't']) {
+    initFeatures() {
         // 储存类型
         let res = [];
         // 解析U V T 数据
-        // let arr = CommonUtils.getLonLatMatrixAuto({ data: message, option, map: this.map, symbolLength: this.windPixelLength });
-        let arr = CommonUtils.getLonLatMatrix({ data: message, option });
+        let arr = CommonUtils.getLonLatMatrix({ data: this.layerData, option: this.patternElementName });
+        console.info('ws >>>> ⚡⚡ arrarr', arr);
         // 循环设置 添加图形和 样式
         let point;
         arr.forEach(item => {
@@ -180,8 +183,8 @@ export default class drawWind extends GridValue {
         let windA = CommonUtils.getUVRad(u, v);
         // 风速
         let windB = null;
-        // 当type为 ms:米/秒  jie:美国计算单位
-        windB = CommonUtils.getUVSpeedKT(u, v);
+        // 计算单位 m/s
+        windB = CommonUtils.getUVSpeed(u, v);
 
         return { windA, windB, dir }
     }

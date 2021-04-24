@@ -16,7 +16,9 @@ export default {
 </script>
 <style lang="scss">
 .mapShowIndexCont {
-    flex: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     #mapBox {
         width: 100%;
         height: 100%;

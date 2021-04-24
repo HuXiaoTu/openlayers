@@ -4,9 +4,9 @@ import { unByKey } from 'ol/Observable';
 import { fromLonLat, toLonLat } from 'ol/proj';
 import { Fill, Stroke, Style, Text } from "ol/style";
 import CircleStyle from 'ol/style/Circle';
-import { getCurrentMap } from '../../../components/jsTool/mapTool.js';
-import CommonUtils from "../../../components/jsTool/CommonUtils.js";
-import FeatureTool from '../../../components/jsTool/FeatureTool.js';
+import { getCurrentMap, getCurrentProjCode } from '../mapTool.js';
+import CommonUtils from "../CommonUtils.js";
+import FeatureTool from '../FeatureTool.js';
 
 /**
  * 展示格点值的父类  带自动抽析监听的
@@ -74,15 +74,24 @@ export default class GridValue {
         this.patternElementName = patternElementName.toString().split(",");
         return this;
     }
+    /**
+     * @description 设置数据
+     * @param {*} originalData 
+     */
+    setData(layerData) {
+        this.layerData = layerData;
+        return this;
+    }
 
     /**
-     * 设置要素的集合
+     * @description 设置要素的集合
      * @param {*} option ['u','v']
      */
     setPatternElementName(patternElementName) {
         this.patternElementName = patternElementName;
         return this;
     }
+
     /**
      * 设置类型
      * @param {*} featureType 
@@ -170,7 +179,7 @@ export default class GridValue {
                 });
             }
             console.log("initFeatures --------filter Sum------->", this.data.length)
-            let proj = this.getProjCode();
+            let proj = getCurrentProjCode();
             let coor, lontlat, showText, f;
             if (this.data && this.data.length > 0) {
                 this.data.forEach(element => {
@@ -262,6 +271,15 @@ export default class GridValue {
             }
         }
         return [minLon, maxLon, minLat, maxLat];
+    }
+    //修复异常经纬度
+    fixLonLat(lonlat) {
+        if (Number.isNaN(lonlat[0]) || Number.isNaN(lonlat[1])) {
+            return undefined;
+        }
+        lonlat[0] = Number(lonlat[0]) > 180 ? Number(180 - lonlat[0]) : Number(lonlat[0]);
+        lonlat[0] = Number(lonlat[0]) < -180 ? Number(lonlat[0] + 360) : Number(lonlat[0]);
+        return lonlat;
     }
 
     // 按照可视区域和当前缩放级别自动计算数据显示间隔
