@@ -23,7 +23,7 @@ export default {
         width: 100%;
         height: 100%;
         position: relative;
-        background-color: #000000;
+        background-color: rgb(163, 215, 236);
         #mouse-position {
             position: absolute;
             right: 5px;

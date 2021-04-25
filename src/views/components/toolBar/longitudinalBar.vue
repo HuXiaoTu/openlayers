@@ -21,9 +21,8 @@
 </template>
 <script>
 import { saveAs } from 'file-saver';
-
-import { getCurrentView, getCurrentMap, dataOverlayDisplayGroup, clearMapDraw } from '../jsTool/mapTool';
 import { onMounted, ref } from 'vue';
+import { getCurrentView, getCurrentMap, clearMapDraw } from '../../../components/jsTool/mapTool';
 export default {
     setup() {
         let heightContent = ref(0);

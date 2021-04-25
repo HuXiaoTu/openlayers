@@ -20,5 +20,4 @@ export const drawFeatures = ({ type, data }) => {
 
     let features = new handel().setData(data).initFeatures();
     VectorLayerShow.getSource().addFeatures(features);
-    console.info('>>>> ws >>>⚡⚡ features', features)
 }

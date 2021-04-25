@@ -1,9 +1,13 @@
 import { createApp } from 'vue';
 import App from './App.vue'
 
+// mockJS 数据拦截
+import './assets/mockJS/mock';
+
 import router from './route/route'
 import ElementPlus from 'element-plus';
 import 'element-plus/lib/theme-chalk/index.css';
+
 
 const app = createApp(App)
 // 注册路由

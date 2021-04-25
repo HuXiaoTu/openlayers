@@ -96,7 +96,8 @@ export const initialMap = (target = '') => {
         projection: "EPSG:4326",
         target: 'mouse-position',
     });
-    let maxExtent = boundingExtent([[180, 85], [180, -85]]);
+    // let maxExtent = boundingExtent([[180, 90], [-180, -90]]);
+    let maxExtent = boundingExtent([[0, 80], [120, -80]]);
     view = new View({
         projection: 'EPSG:4326',                    // 投影类型
         center: [100, 38],                          // 地图中心点经纬度

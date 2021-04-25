@@ -14,6 +14,7 @@
 <script>
 import { staticDisplayList } from '../../assets/staticData/staticData.js';
 import { drawFeatures } from '../../components/jsTool/controlCenter.js';
+import { getData } from '../../axios/axios/axiosList.js';
 export default {
     data() {
         return {
@@ -23,14 +24,11 @@ export default {
     },
     methods: {
         btnClick({ name, type }) {
-            let message = {
-                lon: [90, 95, 100],
-                lat: [30, 35, 40],
-                u: [10, 10, 10, 10, 10, 15, 50, 20, 30],
-                v: [10, 10, 10, 10, 10, 15, 20, 11, 34, 55],
-                t: ['10', '10', '10', '10', '10', '15', '11', '35', '32'],
-            }
-            drawFeatures({ type, data: message })
+            // 根据类型 获取数据
+            getData('/windTemperature', { type }).then(data => {
+                console.info('>>>> ws >>>⚡⚡ data', data)
+                drawFeatures({ type, data })
+            })
         }
     }
 }

@@ -24,8 +24,9 @@
 </template>
 <script>
 import MapView from './views/mapView/mapView.vue';
-import TopMenu from './components/topMenu/top.vue';
-import LongitudinalBar from './components/toolBar/longitudinalBar.vue';
+import TopMenu from './views/components/topMenu/top.vue';
+import LongitudinalBar from './views//components/toolBar/longitudinalBar.vue';
+
 import { onMounted } from 'vue';
 export default {
     components: {
@@ -79,7 +80,7 @@ export default {
             }
             .longitudinal {
                 position: absolute;
-                left: 300px;
+                left: 0;
                 top: 0;
                 z-index: 1;
             }

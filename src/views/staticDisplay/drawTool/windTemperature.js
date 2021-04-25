@@ -26,7 +26,6 @@ export default class windTemperature extends GridValue {
         let res = [];
         // 解析U V T 数据
         let arr = CommonUtils.getLonLatMatrix({ data: this.layerData, option: this.patternElementName });
-        console.info('ws >>>> ⚡⚡ arrarr', arr);
         // 循环设置 添加图形和 样式
         let point;
         arr.forEach(item => {
@@ -181,10 +180,8 @@ export default class windTemperature extends GridValue {
         let dir = CommonUtils.getUVAngle(u, v);
         // 风向
         let windA = CommonUtils.getUVRad(u, v);
-        // 风速
-        let windB = null;
-        // 计算单位 m/s
-        windB = CommonUtils.getUVSpeed(u, v);
+        // 风速  计算单位 m/s
+        let windB = CommonUtils.getUVSpeed(u, v);
 
         return { windA, windB, dir }
     }
