@@ -43,7 +43,7 @@ export default {
             // 观察器的配置（需要观察什么变动）
             const config = { childList: true, };
             // 当观察到变动时执行的回调函数
-            const callback = (mutationsList, observer) => {
+            const callback = () => {
                 longitudinal.style.left = targetNode.clientWidth + 'px';
             };
             // 创建一个观察器实例并传入回调函数

@@ -50,6 +50,40 @@ export function getDeviationAngleByLonLatPoint(lonLatPoint, map) {
     return getDeviationAngle(point_coordinate, map);
 }
 
+/**
+ * @description 根据投影转换feature的坐标及其vertex textExtent的坐标
+ * @param {Feature|Array<Feature>} features
+ * @param {String} sourceProjCode 
+ * @param {String} newProjCode 
+ */
+export function transFeatureByProj(features, sourceProjCode, newProjCode) {
+
+    //将所有feature的坐标转换为新投影的坐标
+    if (sourceProjCode == newProjCode) return;
+    const list = Array.isArray(features) ? features : [features];
+    list.forEach(feature => {
+        if (!feature || !feature.getGeometry()) return;
+        feature.getGeometry().transform(sourceProjCode, newProjCode);
+        //转换所有feature的控制点vertex
+        let vertex = feature.get('vertex');
+        if (vertex && vertex.length > 0) {
+            let vertexAfter = [];
+            vertex.forEach(p => {
+                vertexAfter.push(new Point(p).transform(sourceProjCode, newProjCode).getCoordinates());
+            });
+            feature.setProperties({ 'vertex': vertexAfter }, false);
+        }
+        //转换所有feature的文字范围extent
+        let extent = feature.get('textExtent');
+        if (extent && extent.length > 0) {
+            let extentAfter = [];
+            vertex.forEach(p => {
+                extentAfter.push(new Point(p).transform(sourceProjCode, newProjCode).getCoordinates());
+            });
+            feature.setProperties({ 'textExtent': extentAfter }, false);
+        }
+    });
+}
 
 
 /**

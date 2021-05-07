@@ -1343,3 +1343,36 @@ export let stopContextmenuFunction = evt => {
     }
     return false;
 };
+
+/**
+ * 获取最大值 最小值 间隔
+ * @param {any} data            interfeceinfo 数据  
+ * @param {any} rangeCount      取值几份 默认 10 等分
+ * 
+ * @memberOf TableFunction
+ */
+export function getMaxOrMinData({ defaultSetting, dataValueMax, dataValueMin }, rangeCount = 10) {
+    // 获取计算过后的色彩列表和范围
+    let max = 0;
+    let min = 0;
+    // 为数据值域范围时
+    if (defaultSetting.range == "range") {
+        max = Number(dataValueMax);
+        min = Number(dataValueMin);
+    }
+    // 为自定义间隔时
+    else if (defaultSetting.range == "definition") {
+        max = Number(defaultSetting.maxRange ?? dataValueMax);
+        min = Number(defaultSetting.minRange ?? dataValueMin);
+    }
+    else if (defaultSetting.range == "appoint") {
+        max = Number(dataValueMax);
+        min = Number(dataValueMin);
+    }
+    if ((!max && max !== 0) || (!min && min !== 0) || max === min) throw (`最大值${dataValueMax}最小值${dataValueMin}间隔有误,`);
+    let settingsStep = Number(defaultSetting.contourStep ? defaultSetting.contourStep : defaultSetting.step);
+    if (settingsStep == 0) settingsStep = 10000;
+    let { state, step } = this.handleDataState(max, min, settingsStep, rangeCount);
+    if (!state) mainVue.popUp({ message: '值域范围有误或间隔不满足，已重新配置间隔值' })
+    return { max, min, step }
+}
