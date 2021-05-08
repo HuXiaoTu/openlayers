@@ -1,6 +1,5 @@
 import GeoJSON from "ol/format/GeoJSON";
 import { Fill, Style } from "ol/style";
-
 import { getData } from '../../../axios/axios/axiosList.js';
 import { getCurrentProjCode } from "../../../components/jsTool/mapTool.js";
 import FeatureTool from "../../../components/jsTool/FeatureTool.js";

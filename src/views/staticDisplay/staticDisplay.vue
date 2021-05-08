@@ -13,7 +13,7 @@
 </template>
 <script>
 import { staticDisplayList } from '../../assets/staticData/staticData.js';
-import { drawFeatures } from '../../components/jsTool/controlCenter.js';
+import { drawFeatures } from './controlCenter/controlCenter.js';
 import { getData } from '../../axios/axios/axiosList.js';
 export default {
     data() {

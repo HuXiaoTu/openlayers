@@ -1,5 +1,5 @@
 import Mock from 'mockjs';
-import { colorBoard } from '../../../public/colorBoard.js'
+import { colorBoard, isoLine } from '../../../public/colorBoard.js'
 const Random = Mock.Random;
 
 
@@ -26,6 +26,13 @@ Mock.mock(/^\/windTemperature/, function (options) {
         't': getLengthCreateArr(5400, 40, -5, 0, 0),
     }
 })
+
+// 获取 等值线 数据
+Mock.mock(/^\/isoLine/, function (options) {
+    console.info('>>>> ws >>>⚡⚡ options', options)
+    return isoLine;
+})
+
 
 // 获取色斑图 数据
 Mock.mock(/^\/colorBoard/, function (options) {

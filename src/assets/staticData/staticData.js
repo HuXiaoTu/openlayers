@@ -13,6 +13,10 @@ export const staticDisplayList = [
         type: 'gridPoint'
     },
     {
+        name: '等值线',
+        type: 'isoLine'
+    },
+    {
         name: '填色图',
         type: 'colouring'
     },
