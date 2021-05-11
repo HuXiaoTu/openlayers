@@ -1,5 +1,5 @@
 <template>
-    <!-- 静态绘制页面 -->
+    <!-- 静态显示页面 -->
     <div class="staticDisplayMenu">
         <div
             class="btnClick btnCss"

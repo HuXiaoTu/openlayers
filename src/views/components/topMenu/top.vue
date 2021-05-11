@@ -13,6 +13,7 @@
         <el-submenu index="2">
             <template #title>openlayers</template>
             <el-menu-item index="/staticDisplay">展示</el-menu-item>
+            <el-menu-item index="/staticDraw">绘制</el-menu-item>
         </el-submenu>
     </el-menu>
 </template>

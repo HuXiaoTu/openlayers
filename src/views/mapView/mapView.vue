@@ -10,7 +10,6 @@ import { initialMap } from '../../components/jsTool/mapTool.js'
 export default {
     mounted() {
         let map = initialMap('mapBox');
-        console.info('>>>> ws >>>⚡⚡ initialMap', map)
     }
 }
 </script>

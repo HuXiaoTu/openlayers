@@ -49,14 +49,12 @@ export const dataOverlayGroup = new LayerGroup({
         // new TileLayer({source: new Stamen({ layer: 'toner', })}),
         new TileLayer({
             source: new XYZ({
-                attributions:
-                    'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
-                    'rest/services/World_Topo_Map/MapServer">ArcGIS</a>',
-                url:
-                    'https://server.arcgisonline.com/ArcGIS/rest/services/' +
-                    'World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+                attributions: 'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' + 'rest/services/World_Topo_Map/MapServer">ArcGIS</a>',
+                url: 'https://server.arcgisonline.com/ArcGIS/rest/services/' + 'World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
                 // 解决图片跨域问题
                 crossOrigin: "Anonymous",
+                // 当加载出错时 使用临时磁贴
+                useInterimTilesOnError: true,
             }),
         })
     ]
