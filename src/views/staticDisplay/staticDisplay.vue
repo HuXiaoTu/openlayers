@@ -1,6 +1,7 @@
 <template>
     <!-- 静态显示页面 -->
     <div class="staticDisplayMenu">
+        <!-- 绘制按钮列表 -->
         <div
             class="btnClick btnCss"
             v-for="(item,index) in btnList"

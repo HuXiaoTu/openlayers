@@ -348,7 +348,6 @@ export default {
             ]
         }
     },
-
     setup() {
         // 编辑 动画
         let animationOperate = ref(0);
@@ -357,7 +356,6 @@ export default {
         let settingsBtn = () => {
             animationOperate.value = !animationOperate.value;
         }
-
         // 是否显示 提示信息
         let isTooltip = ref(0);
         isTooltip.value = false;
@@ -467,7 +465,6 @@ export default {
             // 绑定 拖拽 事件
             dragEvent();
         })
-
         return {
             isTooltip,
             animationOperate,
