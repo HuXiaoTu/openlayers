@@ -7,6 +7,7 @@
         </div>
         <!-- 按钮 展示列表 -->
         <div class="staticDrawMenuBtns">
+            <!-- 提示信息 -->
             <el-tooltip
                 placement="top"
                 :enterable="false"
@@ -15,11 +16,13 @@
                 :content="item.title"
                 :disabled="isTooltip"
             >
+                <!-- 按钮 btn -->
                 <span
                     :class="{'staticDrawMenuBtn':true,'animationOperate':animationOperate}"
                     :key="index"
                     :draggable="animationOperate"
                 >
+                    <!-- icon 图标 -->
                     <svg class="icon" aria-hidden="true">
                         <use :xlink:href="item.iconClass" />
                     </svg>
