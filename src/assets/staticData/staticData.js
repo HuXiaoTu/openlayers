@@ -2,29 +2,30 @@
 export const staticDisplayList = [
     {
         name: '风温',
-        type: 'windTemperature'
+        type: 'windTemperature1'
     },
     {
         name: '风矢量',
-        type: 'windArrow'
+        type: 'windArrow1'
     },
     {
         name: '格点值',
-        type: 'gridPoint'
+        type: 'gridPoint1'
     },
     {
         name: '等值线',
-        type: 'isoLine'
+        type: 'isoLine1'
     },
     {
-        name: '填色图',
-        type: 'colouring'
+        name: '填色图',
+        type: 'colouring1'
     },
     {
-        name: '色斑图',
-        type: 'colorBoard'
+        name: '色斑图',
+        type: 'colorBoard1'
     },
 ]
+
 // 静态绘制 符号 列表
 export const symbolList = [
     {
@@ -252,6 +253,33 @@ export const symbolList = [
         btnType: "lineWithoutTypeHeight"
     },
 ]
+// // 静态展示 按钮 列表
+// export const staticDisplayList = [
+//     {
+//         name: '风温',
+//         type: 'windTemperature'
+//     },
+//     {
+//         name: '风矢量',
+//         type: 'windArrow'
+//     },
+//     {
+//         name: '格点值',
+//         type: 'gridPoint'
+//     },
+//     {
+//         name: '等值线',
+//         type: 'isoLine'
+//     },
+//     {
+//         name: '填色图',
+//         type: 'colouring'
+//     },
+//     {
+//         name: '色斑图',
+//         type: 'colorBoard'
+//     },
+// ]
 // // 静态绘制 符号 列表
 // export const symbolList = [
 //     {

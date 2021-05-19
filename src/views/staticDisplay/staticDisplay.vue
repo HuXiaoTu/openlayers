@@ -4,12 +4,14 @@
         <!-- 绘制按钮列表 -->
         <div
             class="btnClick btnCss"
-            v-for="(item,index) in btnList"
+            v-for="(item, index) in btnList"
             :key="index"
             size="mini"
             type="primary"
             @click="btnClick(item)"
-        >{{item.name}}</div>
+        >
+            {{ item.name }}
+        </div>
     </div>
 </template>
 <script>
@@ -43,6 +45,7 @@ export default {
     padding: 5px;
     .btnCss {
         margin-bottom: 5px;
+        font-family: myIcon;
     }
 }
 </style>
