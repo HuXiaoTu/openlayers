@@ -31,7 +31,7 @@ export const symbolList = [
         iconClass: '#icontempCenter',
         isActive: false,
         title: "温度中心",
-        featureType: "TemperatureCenter",
+        featureType: "temperatureCenter",
         btnType: "W_C_point"
     },
     {

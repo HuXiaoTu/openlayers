@@ -32,7 +32,7 @@
     </div>
 </template>
 <script>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import { symbolList } from '../../assets/staticData/staticData';
 export default {
     data() {
@@ -46,16 +46,10 @@ export default {
         // 编辑 动画
         let animationOperate = ref(0);
         animationOperate.value = false;
-        // 设置按钮触发
-        let settingsBtn = () => {
-            animationOperate.value = !animationOperate.value;
-        }
 
-        // 是否显示 提示信息
-        let isTooltip = ref(0);
-        isTooltip.value = false;
         // 处理 拖拽 事件绑定
         let dragEvent = () => {
+
             let node = document.querySelector(".staticDrawMenuBtns");
 
             // 防止提示信息 影响拖拽位置
@@ -156,13 +150,43 @@ export default {
                 }
             }
         }
-        // 绑定 拖拽 事件
-        onMounted(() => dragEvent())
+
+        // 设置按钮触发
+        let settingsBtn = () => {
+            animationOperate.value = !animationOperate.value;
+            // 当为 编辑状态 绑定 拖拽 事件
+            if (animationOperate.value) dragEvent();
+            else {
+                // 清空绑定事件
+                let node = document.querySelector(".staticDrawMenuBtns");
+                node.onmousedown = null;
+                node.ondragend = null;
+                node.ondragstart = null;
+                node.ondragover = null;
+            }
+        }
+
+        // 是否显示 提示信息
+        let isTooltip = ref(0);
+        isTooltip.value = false;
+
 
         // 绘制按钮触发
-        let clickDraw = () => {
+        let clickDraw = (e) => {
             // 如果在编辑状态 取消绘制状态
             if (animationOperate.value) return
+
+            // 处理当前选中效果
+            let box = document.body.querySelector('.staticDrawMenuBtns');
+            let dom = e.currentTarget;
+            let select = box.querySelector('.activeBtn');
+            if (select && dom != select) select.classList.remove('activeBtn');
+            // flg 当前选中状态
+            let flg = dom.classList.toggle('activeBtn');
+            if (!flg) return;
+
+            //创建creator
+            // let creator = FeatureCreator.create(item.featureType);
 
             console.info('>>>> ws >>>⚡⚡ 准备工作完成，开始绘制',)
         }
@@ -203,12 +227,13 @@ export default {
             font-size: 25px;
             width: 12%;
             text-align: center;
+            border-radius: 5px;
         }
         .icon {
             border-radius: 5px;
         }
         .animationOperate {
-            animation: editAnimation 0.5s linear infinite;
+            animation: editAnimation 0.3s linear infinite;
         }
     }
 }

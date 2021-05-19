@@ -11,6 +11,10 @@
         color: rgb(230, 224, 224);
     }
 }
+// 选中按钮样式
+.activeBtn{
+    background-color: skyblue;
+}
 // 编辑 动画
 @keyframes editAnimation {
     25%{
