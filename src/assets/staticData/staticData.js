@@ -17,11 +17,11 @@ export const staticDisplayList = [
         type: 'isoLine1'
     },
     {
-        name: '填色图',
+        name: '填色图',
         type: 'colouring1'
     },
     {
-        name: '色斑图',
+        name: '色斑图',
         type: 'colorBoard1'
     },
 ]
