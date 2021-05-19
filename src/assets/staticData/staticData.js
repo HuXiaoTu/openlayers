@@ -28,310 +28,537 @@ export const staticDisplayList = [
 // 静态绘制 符号 列表
 export const symbolList = [
     {
-        iconClass: '#icontempCenter',
+        iconClass: '#icontianqi-1',
         isActive: false,
-        title: "温度中心",
+        title: "夜间雪",
         featureType: "temperatureCenter",
         btnType: "W_C_point"
     },
     {
-        iconClass: '#iconhlPressure',
+        iconClass: '#icontianqi-2',
         isActive: false,
-        title: "高低压中心/高低位势中心",
+        title: "雨",
         featureType: "PressCenter",
         btnType: "H_L_point"
     },
     {
-        iconClass: '#icontempColdCenter',
+        iconClass: '#icontianqi-3',
         isActive: false,
-        title: "温度冷中心/冷堆",
+        title: "小雨",
         featureType: "ColdCenter",
         btnType: "point"
     },
     {
-        iconClass: '#iconsingleRain',
+        iconClass: '#icontianqitaifeng',
         isActive: false,
-        title: "单站降水",
+        title: "台风",
         featureType: "WeatherSingle",
         drawType: "Rain",
         btnType: "point"
     },
     {
-        iconClass: '#iconhotCyclone',
+        iconClass: '#iconqixiangzhan',
         isActive: false,
-        title: "热带气旋",
+        title: "风车",
         featureType: "Hotcyclone",
         btnType: "point"
     },
     {
-        iconClass: '#iconsinglePointSymbol',
+        iconClass: '#iconqiwen',
         isActive: false,
-        title: "单点符号",
+        title: "寒冷",
         featureType: "SinglePoint",
         btnType: "SinglePoint"
     },
     {
-        iconClass: '#iconweatherArea2',
+        iconClass: '#iconqiwen-',
         isActive: false,
-        title: "天气区",
+        title: "炎热",
         featureType: "AnalysisWeatherArea2",
         btnType: "area"
     },
     {
-        iconClass: '#iconisobaricLine',
-        isActive: false, title: "等压线",
+        iconClass: '#icontianqi2',
+        isActive: false,
+        title: "晴雨",
         featureType: "AnalysisContourPress",
         btnType: "lineWithHeight",
-        heightArr: [
-            { label: "200hPa", id: 200 },
-            { label: "500hPa", id: 500 },
-            { label: "地面分析", id: 9999 },
-        ]
     },
     {
-        iconClass: '#iconisobaricLine',
-        isActive: false, title: "等风速线",
+        iconClass: '#icontianqi3',
+        isActive: false,
+        title: "保暖",
         featureType: "AnalysisContourWind",
         btnType: "lineWithHeight",
-        heightArr: [
-            { label: "200hPa", id: 200 },
-            { label: "500hPa", id: 500 },
-            { label: "地面分析", id: 9999 },
-        ]
     },
     {
-        iconClass: '#iconisobaricLine',
-        isActive: false, title: "等高线",
+        iconClass: '#iconMBEfenggechangyongtubiao-tianqi',
+        isActive: false, title: "雪天",
         featureType: "AnalysisContourHeight",
         btnType: "lineWithHeight",
-        heightArr: [
-            { label: "200hPa", id: 200 },
-            { label: "500hPa", id: 500 },
-            { label: "地面分析", id: 9999 },
-        ]
     },
     {
-        iconClass: '#iconupLine',
+        iconClass: '#iconshuiwuqixiang',
         isActive: false,
-        title: "等变压线",
+        title: "水滴",
         featureType: "VarContourPress",
         btnType: "line"
     },
     {
-        iconClass: '#iconchangeHighLine',
+        iconClass: '#icontianqiyubao',
         isActive: false,
-        title: "24小时变高",
+        title: "蓝天",
         featureType: "VariableHeight24Hour",
         btnType: "lineWithoutType",
-        heightArr: [
-            { label: "500hPa", id: 500 },
-        ]
     },
     {
-        iconClass: '#icontempLine',
+        iconClass: '#iconqixiangzhan1',
         isActive: false,
-        title: "等温线",
+        title: "气象站",
         featureType: "TemperatureContour",
         btnType: "lineWithHeight",
-        heightArr: [
-            { label: "500hPa", id: 500 },
-            { label: "700hPa", id: 700 },
-            { label: "850hPa", id: 850 },
-            { label: "925hPa", id: 925 },
-            { label: "地面分析", id: 9999 },
-        ]
     },
     {
-        iconClass: '#icontempWetLine',
+        iconClass: '#icontianqi4',
         isActive: false,
-        title: "等露点温度线/等比湿线",
+        title: "粉红天气",
         featureType: "DewPointHumidityContour",
         btnType: "lineWithHeight",
-        heightArr: [
-            { label: "700hPa", id: 700 },
-            { label: "850hPa", id: 850 },
-            { label: "925hPa", id: 925 },
-            { label: "地面分析", id: 9999 },
-        ]
     },
     {
-        iconClass: '#icondryLine',
+        iconClass: '#iconxiaoyu',
         isActive: false,
-        title: "干线",
+        title: "小雨",
         featureType: "DryLine",
         btnType: "lineWithoutType",
-        heightArr: [
-            { label: "700hPa", id: 700 },
-            { label: "925hPa", id: 925 },
-            { label: "地面分析", id: 9999 },
-        ]
     },
     {
-        iconClass: '#icontempPointLine',
+        iconClass: '#iconxue',
         isActive: false,
-        title: "等温度露点差线",
+        title: "雪天气",
         featureType: "EqualTempDewPointDiff",
         btnType: "lineWithHeight",
-        heightArr: [
-            { label: "700hPa", id: 700 },
-            { label: "850hPa", id: 850 },
-            { label: "925hPa", id: 925 },
-            { label: "地面分析", id: 9999 },
-        ]
     },
     {
-        iconClass: '#icontempSlot',
+        iconClass: '#iconcloud',
         isActive: false,
-        title: "温度槽冷槽",
+        title: "小心心",
         featureType: "ColdTrough",
         btnType: "lineWithoutType",
-        heightArr: [
-            { label: "500hPa", id: 500 },
-            { label: "700hPa", id: 700 },
-        ]
     },
     {
-        iconClass: '#icontemperatureRidge',
+        iconClass: '#icontianqitubiao_wu',
         isActive: false,
-        title: "温度脊暖脊",
+        title: "雾",
         featureType: "WarmTrough",
         btnType: "lineWithoutType",
-        heightArr: [
-            { label: "700hPa", id: 700 },
-            { label: "850hPa", id: 850 },
-            { label: "925hPa", id: 925 },
-        ]
     },
     {
-        iconClass: '#icondiffLine',
+        iconClass: '#icontianqi',
         isActive: false,
-        title: "700与500温度差/850与500温度差",
+        title: "雷雨",
         featureType: "TemperatureDiff500",
         btnType: "lineWithHeight",
-        heightArr: [
-            { label: "700hPa", id: 700 },
-            { label: "850hPa", id: 850 },
-        ]
     },
     {
-        iconClass: '#iconchangTempLine',
+        iconClass: '#icontianqi-wu',
         isActive: false,
-        title: "变温线",
+        title: "大雾",
         featureType: "VariableTemperature",
         btnType: "lineWithoutType",
-        heightArr: [
-            { label: "500hPa", id: 500 },
-            { label: "700hPa", id: 700 },
-        ]
     },
     {
-        iconClass: '#icondryTongue',
+        iconClass: '#icontianqi-longjuanfeng',
         isActive: false,
-        title: "干舌",
+        title: "龙卷风",
         featureType: "DryTongue",
         btnType: "lineWithoutType",
-        heightArr: [
-            { label: "500hPa", id: 500 },
-            { label: "700hPa", id: 700 },
-        ]
     },
     {
-        iconClass: '#iconwetTongue',
+        iconClass: '#icontianqi-qing',
         isActive: false,
-        title: "湿舌",
+        title: "晴天",
         featureType: "WetTongue",
         btnType: "lineWithoutType",
-        heightArr: [
-            { label: "850hPa", id: 850 },
-            { label: "925hPa", id: 925 },
-            { label: "地面分析", id: 9999 },
-        ]
     },
     {
-        iconClass: '#iconrapids',
+        iconClass: '#icontianqichaxun',
         isActive: false,
-        title: "急流",
+        title: "晴云",
         featureType: "JetStreamAnalysis",
         btnType: "lineWithoutType",
-        heightArr: [
-            { label: "200hPa", id: 200 },
-            { label: "500hPa", id: 500 },
-            { label: "700hPa", id: 700 },
-            { label: "850hPa", id: 850 },
-            { label: "925hPa", id: 925 },
-        ]
     },
     {
-        iconClass: '#iconjetStream',
+        iconClass: '#icontianqi-',
         isActive: false,
-        title: "急流核",
+        title: "大风",
         featureType: "JetStreamCore",
         btnType: "lineWithoutType",
-        heightArr: [
-            { label: "200hPa", id: 200 },
-        ]
     },
     {
-        iconClass: '#iconjetStreamLine',
+        iconClass: '#icontianqi-baoxue',
         isActive: false,
-        title: "显著流线",
+        title: "暴雪",
         featureType: "JetStreamNotable",
         btnType: "lineWithoutType",
-        heightArr: [
-            { label: "500hPa", id: 500 },
-            { label: "700hPa", id: 700 },
-            { label: "850hPa", id: 850 },
-            { label: "925hPa", id: 925 },
-            { label: "地面分析", id: 9999 },
-        ]
     },
     {
-        iconClass: '#iconwarmFront',
+        iconClass: '#icontianqi-weifeng',
         isActive: false,
-        title: "暖锋",
+        title: "微风",
         featureType: "WarmFrontAnalysis",
         btnType: "lineWidth"
     },
     {
-        iconClass: '#iconstationaryFront',
+        iconClass: '#icontianqi-fengbao',
         isActive: false,
-        title: "静止锋",
+        title: "风暴",
         featureType: "StationaryFrontAnalysis",
         btnType: "lineWidth"
     },
     {
-        iconClass: '#iconoccludedFront',
+        iconClass: '#icontianqi-shachenbao',
         isActive: false,
-        title: "锢囚锋",
+        title: "沙尘暴",
         featureType: "OccludedFrontAnalysis",
         btnType: "lineWidth"
     },
     {
-        iconClass: '#iconcoldFront',
+        iconClass: '#iconziyuan',
         isActive: false,
-        title: "冷锋",
+        title: "晚间",
         featureType: "ColdFrontAnalysis",
         btnType: "lineWidth"
     },
     {
-        iconClass: '#iconslotLine',
+        iconClass: '#iconziyuan1',
         isActive: false,
-        title: "切变线/槽线",
+        title: "有云",
         featureType: "SlotLine",
         btnType: "line"
     },
     {
-        iconClass: '#iconconvergenceLine',
+        iconClass: '#icontianqitubiao-67',
         isActive: false,
-        title: "辐合线",
+        title: "大公鸡",
         featureType: "ConvergenceAnalysis",
         btnType: "lineWithoutTypeHeight"
     },
     {
-        iconClass: '#iconsquallline',
+        iconClass: '#icontianqitubiao_qing',
         isActive: false,
-        title: "飑线",
+        title: "大太阳",
         featureType: "SqualllineAnalysis",
         btnType: "lineWithoutTypeHeight"
     },
 ]
+// // 静态绘制 符号 列表
+// export const symbolList = [
+//     {
+//         iconClass: '#icontempCenter',
+//         isActive: false,
+//         title: "温度中心",
+//         featureType: "temperatureCenter",
+//         btnType: "W_C_point"
+//     },
+//     {
+//         iconClass: '#iconhlPressure',
+//         isActive: false,
+//         title: "高低压中心/高低位势中心",
+//         featureType: "PressCenter",
+//         btnType: "H_L_point"
+//     },
+//     {
+//         iconClass: '#icontempColdCenter',
+//         isActive: false,
+//         title: "温度冷中心/冷堆",
+//         featureType: "ColdCenter",
+//         btnType: "point"
+//     },
+//     {
+//         iconClass: '#iconsingleRain',
+//         isActive: false,
+//         title: "单站降水",
+//         featureType: "WeatherSingle",
+//         drawType: "Rain",
+//         btnType: "point"
+//     },
+//     {
+//         iconClass: '#iconhotCyclone',
+//         isActive: false,
+//         title: "热带气旋",
+//         featureType: "Hotcyclone",
+//         btnType: "point"
+//     },
+//     {
+//         iconClass: '#iconsinglePointSymbol',
+//         isActive: false,
+//         title: "单点符号",
+//         featureType: "SinglePoint",
+//         btnType: "SinglePoint"
+//     },
+//     {
+//         iconClass: '#iconweatherArea2',
+//         isActive: false,
+//         title: "天气区",
+//         featureType: "AnalysisWeatherArea2",
+//         btnType: "area"
+//     },
+//     {
+//         iconClass: '#iconisobaricLine',
+//         isActive: false, title: "等压线",
+//         featureType: "AnalysisContourPress",
+//         btnType: "lineWithHeight",
+//         heightArr: [
+//             { label: "200hPa", id: 200 },
+//             { label: "500hPa", id: 500 },
+//             { label: "地面分析", id: 9999 },
+//         ]
+//     },
+//     {
+//         iconClass: '#iconisobaricLine',
+//         isActive: false, title: "等风速线",
+//         featureType: "AnalysisContourWind",
+//         btnType: "lineWithHeight",
+//         heightArr: [
+//             { label: "200hPa", id: 200 },
+//             { label: "500hPa", id: 500 },
+//             { label: "地面分析", id: 9999 },
+//         ]
+//     },
+//     {
+//         iconClass: '#iconisobaricLine',
+//         isActive: false, title: "等高线",
+//         featureType: "AnalysisContourHeight",
+//         btnType: "lineWithHeight",
+//         heightArr: [
+//             { label: "200hPa", id: 200 },
+//             { label: "500hPa", id: 500 },
+//             { label: "地面分析", id: 9999 },
+//         ]
+//     },
+//     {
+//         iconClass: '#iconupLine',
+//         isActive: false,
+//         title: "等变压线",
+//         featureType: "VarContourPress",
+//         btnType: "line"
+//     },
+//     {
+//         iconClass: '#iconchangeHighLine',
+//         isActive: false,
+//         title: "24小时变高",
+//         featureType: "VariableHeight24Hour",
+//         btnType: "lineWithoutType",
+//         heightArr: [
+//             { label: "500hPa", id: 500 },
+//         ]
+//     },
+//     {
+//         iconClass: '#icontempLine',
+//         isActive: false,
+//         title: "等温线",
+//         featureType: "TemperatureContour",
+//         btnType: "lineWithHeight",
+//         heightArr: [
+//             { label: "500hPa", id: 500 },
+//             { label: "700hPa", id: 700 },
+//             { label: "850hPa", id: 850 },
+//             { label: "925hPa", id: 925 },
+//             { label: "地面分析", id: 9999 },
+//         ]
+//     },
+//     {
+//         iconClass: '#icontempWetLine',
+//         isActive: false,
+//         title: "等露点温度线/等比湿线",
+//         featureType: "DewPointHumidityContour",
+//         btnType: "lineWithHeight",
+//         heightArr: [
+//             { label: "700hPa", id: 700 },
+//             { label: "850hPa", id: 850 },
+//             { label: "925hPa", id: 925 },
+//             { label: "地面分析", id: 9999 },
+//         ]
+//     },
+//     {
+//         iconClass: '#icondryLine',
+//         isActive: false,
+//         title: "干线",
+//         featureType: "DryLine",
+//         btnType: "lineWithoutType",
+//         heightArr: [
+//             { label: "700hPa", id: 700 },
+//             { label: "925hPa", id: 925 },
+//             { label: "地面分析", id: 9999 },
+//         ]
+//     },
+//     {
+//         iconClass: '#icontempPointLine',
+//         isActive: false,
+//         title: "等温度露点差线",
+//         featureType: "EqualTempDewPointDiff",
+//         btnType: "lineWithHeight",
+//         heightArr: [
+//             { label: "700hPa", id: 700 },
+//             { label: "850hPa", id: 850 },
+//             { label: "925hPa", id: 925 },
+//             { label: "地面分析", id: 9999 },
+//         ]
+//     },
+//     {
+//         iconClass: '#icontempSlot',
+//         isActive: false,
+//         title: "温度槽冷槽",
+//         featureType: "ColdTrough",
+//         btnType: "lineWithoutType",
+//         heightArr: [
+//             { label: "500hPa", id: 500 },
+//             { label: "700hPa", id: 700 },
+//         ]
+//     },
+//     {
+//         iconClass: '#icontemperatureRidge',
+//         isActive: false,
+//         title: "温度脊暖脊",
+//         featureType: "WarmTrough",
+//         btnType: "lineWithoutType",
+//         heightArr: [
+//             { label: "700hPa", id: 700 },
+//             { label: "850hPa", id: 850 },
+//             { label: "925hPa", id: 925 },
+//         ]
+//     },
+//     {
+//         iconClass: '#icondiffLine',
+//         isActive: false,
+//         title: "700与500温度差/850与500温度差",
+//         featureType: "TemperatureDiff500",
+//         btnType: "lineWithHeight",
+//         heightArr: [
+//             { label: "700hPa", id: 700 },
+//             { label: "850hPa", id: 850 },
+//         ]
+//     },
+//     {
+//         iconClass: '#iconchangTempLine',
+//         isActive: false,
+//         title: "变温线",
+//         featureType: "VariableTemperature",
+//         btnType: "lineWithoutType",
+//         heightArr: [
+//             { label: "500hPa", id: 500 },
+//             { label: "700hPa", id: 700 },
+//         ]
+//     },
+//     {
+//         iconClass: '#icondryTongue',
+//         isActive: false,
+//         title: "干舌",
+//         featureType: "DryTongue",
+//         btnType: "lineWithoutType",
+//         heightArr: [
+//             { label: "500hPa", id: 500 },
+//             { label: "700hPa", id: 700 },
+//         ]
+//     },
+//     {
+//         iconClass: '#iconwetTongue',
+//         isActive: false,
+//         title: "湿舌",
+//         featureType: "WetTongue",
+//         btnType: "lineWithoutType",
+//         heightArr: [
+//             { label: "850hPa", id: 850 },
+//             { label: "925hPa", id: 925 },
+//             { label: "地面分析", id: 9999 },
+//         ]
+//     },
+//     {
+//         iconClass: '#iconrapids',
+//         isActive: false,
+//         title: "急流",
+//         featureType: "JetStreamAnalysis",
+//         btnType: "lineWithoutType",
+//         heightArr: [
+//             { label: "200hPa", id: 200 },
+//             { label: "500hPa", id: 500 },
+//             { label: "700hPa", id: 700 },
+//             { label: "850hPa", id: 850 },
+//             { label: "925hPa", id: 925 },
+//         ]
+//     },
+//     {
+//         iconClass: '#iconjetStream',
+//         isActive: false,
+//         title: "急流核",
+//         featureType: "JetStreamCore",
+//         btnType: "lineWithoutType",
+//         heightArr: [
+//             { label: "200hPa", id: 200 },
+//         ]
+//     },
+//     {
+//         iconClass: '#iconjetStreamLine',
+//         isActive: false,
+//         title: "显著流线",
+//         featureType: "JetStreamNotable",
+//         btnType: "lineWithoutType",
+//         heightArr: [
+//             { label: "500hPa", id: 500 },
+//             { label: "700hPa", id: 700 },
+//             { label: "850hPa", id: 850 },
+//             { label: "925hPa", id: 925 },
+//             { label: "地面分析", id: 9999 },
+//         ]
+//     },
+//     {
+//         iconClass: '#iconwarmFront',
+//         isActive: false,
+//         title: "暖锋",
+//         featureType: "WarmFrontAnalysis",
+//         btnType: "lineWidth"
+//     },
+//     {
+//         iconClass: '#iconstationaryFront',
+//         isActive: false,
+//         title: "静止锋",
+//         featureType: "StationaryFrontAnalysis",
+//         btnType: "lineWidth"
+//     },
+//     {
+//         iconClass: '#iconoccludedFront',
+//         isActive: false,
+//         title: "锢囚锋",
+//         featureType: "OccludedFrontAnalysis",
+//         btnType: "lineWidth"
+//     },
+//     {
+//         iconClass: '#iconcoldFront',
+//         isActive: false,
+//         title: "冷锋",
+//         featureType: "ColdFrontAnalysis",
+//         btnType: "lineWidth"
+//     },
+//     {
+//         iconClass: '#iconslotLine',
+//         isActive: false,
+//         title: "切变线/槽线",
+//         featureType: "SlotLine",
+//         btnType: "line"
+//     },
+//     {
+//         iconClass: '#iconconvergenceLine',
+//         isActive: false,
+//         title: "辐合线",
+//         featureType: "ConvergenceAnalysis",
+//         btnType: "lineWithoutTypeHeight"
+//     },
+//     {
+//         iconClass: '#iconsquallline',
+//         isActive: false,
+//         title: "飑线",
+//         featureType: "SqualllineAnalysis",
+//         btnType: "lineWithoutTypeHeight"
+//     },
+// ]

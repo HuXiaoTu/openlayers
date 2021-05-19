@@ -3,21 +3,27 @@
     <div class="staticDrawMenu">
         <!-- 控制 按钮 区域 -->
         <div class="staticDrawMenuTop">
-            <span class="settingBtn el-icon-s-tools" @click="settingsBtn"></span>
+            <span
+                class="settingBtn el-icon-s-tools"
+                @click="settingsBtn"
+            ></span>
         </div>
         <!-- 按钮 展示列表 -->
         <div class="staticDrawMenuBtns">
             <!-- 提示信息 -->
             <el-tooltip
                 placement="top"
-                v-for="(item,index) in symbolList"
+                v-for="(item, index) in symbolList"
                 :enterable="false"
                 :key="index"
                 :content="item.title"
                 :disabled="isTooltip"
             >
                 <span
-                    :class="{'staticDrawMenuBtn':true,'animationOperate':animationOperate}"
+                    :class="{
+                        staticDrawMenuBtn: true,
+                        animationOperate: animationOperate,
+                    }"
                     :key="index"
                     :draggable="animationOperate"
                     @click="clickDraw"
@@ -228,9 +234,10 @@ export default {
             width: 12%;
             text-align: center;
             border-radius: 5px;
-        }
-        .icon {
-            border-radius: 5px;
+            .icon {
+                border-radius: 5px;
+                border: 1px solid #ccc;
+            }
         }
         .animationOperate {
             animation: editAnimation 0.3s linear infinite;
