@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "11673279",
+      "name": "天气",
+      "font_class": "tianqi5",
+      "unicode": "e70a",
+      "unicode_decimal": 59146
+    },
+    {
       "icon_id": "5738015",
       "name": "天气-18",
       "font_class": "tianqi-1",
@@ -60,13 +67,6 @@
       "font_class": "tianqi2",
       "unicode": "e66b",
       "unicode_decimal": 58987
-    },
-    {
-      "icon_id": "6645622",
-      "name": "天气",
-      "font_class": "tianqi3",
-      "unicode": "e70c",
-      "unicode_decimal": 59148
     },
     {
       "icon_id": "8680068",

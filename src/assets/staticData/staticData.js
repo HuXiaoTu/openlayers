@@ -30,6 +30,7 @@ export const staticDisplayList = [
 export const symbolList = [
     {
         iconClass: '#icontianqi-1',
+        fontFamily: '',
         isActive: false,
         title: "夜间雪",
         featureType: "temperatureCenter",
@@ -37,6 +38,7 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqi-2',
+        fontFamily: '',
         isActive: false,
         title: "雨",
         featureType: "PressCenter",
@@ -44,6 +46,7 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqi-3',
+        fontFamily: '',
         isActive: false,
         title: "小雨",
         featureType: "ColdCenter",
@@ -51,14 +54,15 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqitaifeng',
+        fontFamily: '',
         isActive: false,
         title: "台风",
         featureType: "WeatherSingle",
-        drawType: "Rain",
         btnType: "point"
     },
     {
         iconClass: '#iconqixiangzhan',
+        fontFamily: '',
         isActive: false,
         title: "风车",
         featureType: "Hotcyclone",
@@ -66,6 +70,7 @@ export const symbolList = [
     },
     {
         iconClass: '#iconqiwen',
+        fontFamily: '',
         isActive: false,
         title: "寒冷",
         featureType: "SinglePoint",
@@ -73,6 +78,7 @@ export const symbolList = [
     },
     {
         iconClass: '#iconqiwen-',
+        fontFamily: '',
         isActive: false,
         title: "炎热",
         featureType: "AnalysisWeatherArea2",
@@ -80,13 +86,15 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqi2',
+        fontFamily: '',
         isActive: false,
         title: "晴雨",
         featureType: "AnalysisContourPress",
         btnType: "lineWithHeight",
     },
     {
-        iconClass: '#icontianqi3',
+        iconClass: '#icontianqi5',
+        fontFamily: '',
         isActive: false,
         title: "保暖",
         featureType: "AnalysisContourWind",
@@ -94,12 +102,14 @@ export const symbolList = [
     },
     {
         iconClass: '#iconMBEfenggechangyongtubiao-tianqi',
+        fontFamily: '',
         isActive: false, title: "雪天",
         featureType: "AnalysisContourHeight",
         btnType: "lineWithHeight",
     },
     {
         iconClass: '#iconshuiwuqixiang',
+        fontFamily: '',
         isActive: false,
         title: "水滴",
         featureType: "VarContourPress",
@@ -107,6 +117,7 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqiyubao',
+        fontFamily: '',
         isActive: false,
         title: "蓝天",
         featureType: "VariableHeight24Hour",
@@ -114,6 +125,7 @@ export const symbolList = [
     },
     {
         iconClass: '#iconqixiangzhan1',
+        fontFamily: '',
         isActive: false,
         title: "气象站",
         featureType: "TemperatureContour",
@@ -121,6 +133,7 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqi4',
+        fontFamily: '',
         isActive: false,
         title: "粉红天气",
         featureType: "DewPointHumidityContour",
@@ -128,6 +141,7 @@ export const symbolList = [
     },
     {
         iconClass: '#iconxiaoyu',
+        fontFamily: '',
         isActive: false,
         title: "小雨",
         featureType: "DryLine",
@@ -135,6 +149,7 @@ export const symbolList = [
     },
     {
         iconClass: '#iconxue',
+        fontFamily: '',
         isActive: false,
         title: "雪天气",
         featureType: "EqualTempDewPointDiff",
@@ -142,6 +157,7 @@ export const symbolList = [
     },
     {
         iconClass: '#iconcloud',
+        fontFamily: '',
         isActive: false,
         title: "小心心",
         featureType: "ColdTrough",
@@ -149,6 +165,7 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqitubiao_wu',
+        fontFamily: '',
         isActive: false,
         title: "雾",
         featureType: "WarmTrough",
@@ -156,6 +173,7 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqi',
+        fontFamily: '',
         isActive: false,
         title: "雷雨",
         featureType: "TemperatureDiff500",
@@ -163,6 +181,7 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqi-wu',
+        fontFamily: '',
         isActive: false,
         title: "大雾",
         featureType: "VariableTemperature",
@@ -170,6 +189,7 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqi-longjuanfeng',
+        fontFamily: '',
         isActive: false,
         title: "龙卷风",
         featureType: "DryTongue",
@@ -177,13 +197,15 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqi-qing',
+        fontFamily: '',
         isActive: false,
         title: "晴天",
         featureType: "WetTongue",
         btnType: "lineWithoutType",
     },
     {
-        iconClass: '#icontianqichaxun',
+        iconClass: '#iconziyuan3',
+        fontFamily: '',
         isActive: false,
         title: "晴云",
         featureType: "JetStreamAnalysis",
@@ -191,6 +213,7 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqi-',
+        fontFamily: '',
         isActive: false,
         title: "大风",
         featureType: "JetStreamCore",
@@ -198,6 +221,7 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqi-baoxue',
+        fontFamily: '',
         isActive: false,
         title: "暴雪",
         featureType: "JetStreamNotable",
@@ -205,6 +229,7 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqi-weifeng',
+        fontFamily: '',
         isActive: false,
         title: "微风",
         featureType: "WarmFrontAnalysis",
@@ -212,6 +237,7 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqi-fengbao',
+        fontFamily: '',
         isActive: false,
         title: "风暴",
         featureType: "StationaryFrontAnalysis",
@@ -219,6 +245,7 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqi-shachenbao',
+        fontFamily: '',
         isActive: false,
         title: "沙尘暴",
         featureType: "OccludedFrontAnalysis",
@@ -226,6 +253,7 @@ export const symbolList = [
     },
     {
         iconClass: '#iconziyuan',
+        fontFamily: '',
         isActive: false,
         title: "晚间",
         featureType: "ColdFrontAnalysis",
@@ -233,6 +261,7 @@ export const symbolList = [
     },
     {
         iconClass: '#iconziyuan1',
+        fontFamily: '',
         isActive: false,
         title: "有云",
         featureType: "SlotLine",
@@ -240,6 +269,7 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqitubiao-67',
+        fontFamily: '',
         isActive: false,
         title: "大公鸡",
         featureType: "ConvergenceAnalysis",
@@ -247,6 +277,7 @@ export const symbolList = [
     },
     {
         iconClass: '#icontianqitubiao_qing',
+        fontFamily: '',
         isActive: false,
         title: "大太阳",
         featureType: "SqualllineAnalysis",

@@ -3,10 +3,7 @@
     <div class="staticDrawMenu">
         <!-- 控制 按钮 区域 -->
         <div class="staticDrawMenuTop">
-            <span
-                class="settingBtn el-icon-s-tools"
-                @click="settingsBtn"
-            ></span>
+            <span class="settingBtn el-icon-s-tools" @click="settingsBtn"></span>
         </div>
         <!-- 按钮 展示列表 -->
         <div class="staticDrawMenuBtns">
@@ -21,8 +18,8 @@
             >
                 <span
                     :class="{
-                        staticDrawMenuBtn: true,
-                        animationOperate: animationOperate,
+                        'staticDrawMenuBtn': true,
+                        'animationOperate': animationOperate,
                     }"
                     :key="index"
                     :draggable="animationOperate"
@@ -175,7 +172,6 @@ export default {
         // 是否显示 提示信息
         let isTooltip = ref(0);
         isTooltip.value = false;
-
 
         // 绘制按钮触发
         let clickDraw = (e) => {

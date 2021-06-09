@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2539786 */
-  src: url('iconfont.woff2?t=1621428300917') format('woff2'),
-       url('iconfont.woff?t=1621428300917') format('woff'),
-       url('iconfont.ttf?t=1621428300917') format('truetype');
+  src: url('iconfont.woff2?t=1621474379450') format('woff2'),
+       url('iconfont.woff?t=1621474379450') format('woff'),
+       url('iconfont.ttf?t=1621474379450') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icontianqi5:before {
+  content: "\e70a";
 }
 
 .icontianqi-1:before {
@@ -43,10 +47,6 @@
 
 .icontianqi2:before {
   content: "\e66b";
-}
-
-.icontianqi3:before {
-  content: "\e70c";
 }
 
 .iconMBEfenggechangyongtubiao-tianqi:before {
