@@ -2,7 +2,7 @@
     <!-- 内容区域  -->
     <div class="mapShowIndexCont">
         <!-- 地图展示 -->
-        <div id="mapBox"></div>
+        <div id="mapBox" class="map"></div>
     </div>
 </template>
 <script>
@@ -23,12 +23,6 @@ export default {
         height: 100%;
         position: relative;
         background-color: rgb(163, 215, 236);
-        #mouse-position {
-            position: absolute;
-            right: 5px;
-            bottom: 10px;
-            z-index: 10;
-        }
     }
 }
 </style>

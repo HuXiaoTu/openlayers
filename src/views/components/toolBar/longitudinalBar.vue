@@ -22,14 +22,15 @@
 <script>
 import { saveAs } from 'file-saver';
 import { onMounted, ref } from 'vue';
-import { getCurrentView, getCurrentMap, clearMapDraw } from '../../../components/jsTool/mapTool';
+import { getCurrentView, getCurrentMap, clearMapDraw, currentProjCodefromLonLat } from '../../../components/jsTool/mapTool';
+import { mapConfig } from '../../../components/commonSetting/config';
 export default {
     setup() {
         let heightContent = ref(0);
         // 回到中心
         let goZoom = () => {
-            getCurrentView().setCenter([100, 38]);
-            getCurrentView().setZoom(5);
+            getCurrentView().setCenter(currentProjCodefromLonLat(mapConfig.center));
+            getCurrentView().setZoom(mapConfig.zoom);
         }
         // 清空绘制数据
         let clearLayer = () => {

@@ -1,0 +1,47 @@
+// 地图 组件 样式重置
+#mapBox {
+    // 经纬度标值 显示样式
+    #mouse-position {
+        position: absolute;
+        right: 5px;
+        bottom: 10px;
+        z-index: 10;
+        .ol-mouse-position {
+            position: static !important;
+        }
+    }
+    // 小窗 预览样式 
+    .ol-custom-overviewmap,
+    .ol-custom-overviewmap.ol-uncollapsible {
+        bottom: auto;
+        left: auto;
+        right: 0;
+        top: 0;
+        .ol-overviewmap-map {
+            border: none;
+            width: 300px;
+        }
+        .ol-overviewmap-box {
+            border: 2px solid red;
+        }
+    }
+    .ol-custom-overviewmap:not(.ol-collapsed) {
+        border: 1px solid black;
+        button {
+            bottom: auto;
+            left: auto;
+            right: 1px;
+            top: 1px;
+        }
+    }
+    // 按住Shift+Drag以围绕其中心旋转和缩放地图 图标样式
+    .ol-rotate{
+        top: 165px;
+        right: 1px;
+    }
+    // 全屏按钮
+    .ol-full-screen{
+        top: 195px;
+        right: 1px;
+    }
+}
