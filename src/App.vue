@@ -28,6 +28,7 @@ import TopMenu from './views/components/topMenu/top.vue';
 import LongitudinalBar from './views//components/toolBar/longitudinalBar.vue';
 
 import { onMounted } from 'vue';
+import { watchDomChange } from './components/jsTool/CommonUtils';
 export default {
     components: {
         MapView,
@@ -40,22 +41,16 @@ export default {
             const longitudinal = document.querySelector('.longitudinal');
             // 选择需要观察变动的节点
             const targetNode = document.querySelector('.mapMenu');
-            // 观察器的配置（需要观察什么变动）
-            const config = { childList: true, };
             // 当观察到变动时执行的回调函数
             const callback = () => {
                 longitudinal.style.left = targetNode.clientWidth + 'px';
             };
-            // 创建一个观察器实例并传入回调函数
-            const observer = new MutationObserver(callback);
-            // 开始观察目标节点
-            observer.observe(targetNode, config);
+
+            // 绑定 dom 监听事件
+            watchDomChange({ targetNode, callback });
         })
     },
 }
-
-// This starter template is using Vue 3 experimental <script setup> SFCs
-// Check out https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md
 </script>
 
 <style lang="scss">

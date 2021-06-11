@@ -39,9 +39,43 @@
         top: 165px;
         right: 1px;
     }
-    // 全屏按钮
-    .ol-full-screen{
-        top: 195px;
-        right: 1px;
+    // 放大缩小
+    .ol-zoom{
+        display: none;
+    }
+    // 说明信息
+    .ol-attribution{
+        display: none;
+    }
+}
+
+// 纵轴工具栏 map动态追加到里面的 按钮
+.longitudinalBar{
+    .customBtn{
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 3px;
+        background-color: rgba(0, 60, 136, 0.5);
+        color: #ffffff;
+        border-radius: 3px;
+        position: relative!important;
+        right: 0;
+        top: 0;
+        width: 29px;
+        height: 26px;
+        &:hover {
+            background-color: rgba(0, 60, 136, 0.7);
+        }
+        .customBtn-false{
+            width: 100%;
+            height: 100%!important;
+            margin: 0;
+            font-size: 22px;
+            height: auto;
+            line-height: normal;
+            background-color: transparent;
+            border: none;
+        }
     }
 }

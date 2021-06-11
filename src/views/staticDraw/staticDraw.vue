@@ -3,6 +3,7 @@
     <div class="staticDrawMenu">
         <!-- 控制 按钮 区域 -->
         <div class="staticDrawMenuTop">
+            <span class="iconfot">&#xe718;</span>
             <span class="settingBtn el-icon-s-tools" @click="settingsBtn"></span>
         </div>
         <!-- 按钮 展示列表 -->
@@ -23,7 +24,7 @@
                     }"
                     :key="index"
                     :draggable="animationOperate"
-                    @click="clickDraw"
+                    @click="clickDraw($event,item)"
                     @dblclick.stop
                 >
                     <svg class="icon" aria-hidden="true">
@@ -35,13 +36,14 @@
     </div>
 </template>
 <script>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { symbolList } from '../../assets/staticData/staticData';
+import { drawTool } from '../../components/jsTool/drawTool/drawTool';
 export default {
     data() {
         return {
             // 符号列表
-            symbolList: symbolList
+            symbolList: symbolList,
         }
     },
     setup() {
@@ -50,6 +52,7 @@ export default {
         let animationOperate = ref(0);
         animationOperate.value = false;
 
+        let drawToolHandel = new drawTool();
         // 处理 拖拽 事件绑定
         let dragEvent = () => {
 
@@ -174,7 +177,7 @@ export default {
         isTooltip.value = false;
 
         // 绘制按钮触发
-        let clickDraw = (e) => {
+        let clickDraw = (e, { fontFamily }) => {
             // 如果在编辑状态 取消绘制状态
             if (animationOperate.value) return
 
@@ -188,11 +191,47 @@ export default {
             if (!flg) return;
 
             //创建creator
-            // let creator = FeatureCreator.create(item.featureType);
+            // let svg1 = document.querySelector('#icontianqi-1');
+            // let xx = "http://www.w3.org/2000/svg";
+            // let x = document.createElementNS(xx, 'svg');
+            // x.setAttribute('aria-hidden', 'true');
+            // for (let i = 0; i < svg1.children.length; i++) {
+            //     const element = svg1.children[i];
+            //     x.appendChild(element);
+            // }
+            // x.appendChild(svg1);
 
-            console.info('>>>> ws >>>⚡⚡ 准备工作完成，开始绘制',)
+            // let svg = dom.firstChild;
+            // console.info('>>>> ws >>>⚡⚡ row', fontFamily)
+
+            // console.dir(svg);
+            // console.info('>>>> ws >>>⚡⚡ svg.href.baseVal', svg.href)
+            // console.info('>>>> ws >>>⚡⚡ svg.href.baseVal', svg.baseVal)
+
+            // 开始绘制
+            drawToolHandel.setImg(fontFamily).initDraw({ type: 'Point' });
+            // console.info('>>>> ws >>>⚡⚡ svg.ownerDocument', )
+
+            // let canvas = document.createElement('canvas');
+            // canvas.style.width = '100vw';
+            // canvas.style.height = '100vh';
+            // canvas.style.position = 'fixed';
+            // canvas.style.left = '0';
+            // canvas.style.top = '0';
+            // var ctx = canvas.getContext("2d");
+            // ctx.drawImage(x, 10, 10);
+
+            // x.style.position = 'fixed';
+            // x.style.left = '1000px';
+            // x.style.top = '50px';
+            // x.style.background = 'red';
+
+            // document.body.appendChild(x)
+
         }
 
+        onMounted(() => {
+        })
         return {
             isTooltip,
             animationOperate,
@@ -202,7 +241,7 @@ export default {
     },
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
 .staticDrawMenu {
     width: 300px;
     height: 100%;

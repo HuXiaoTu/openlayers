@@ -12,6 +12,7 @@
             <span class="longitudinalBarCenterBtn" title="获取图片" @click="getCanvasMap">
                 <i class="el-icon-picture"></i>
             </span>
+            <!-- 有底图 动态追加到下面的按钮 -->
         </div>
         <!-- 伸缩按钮 -->
         <div class="longitudinalBarShow" @click="showList">
@@ -22,20 +23,25 @@
 <script>
 import { saveAs } from 'file-saver';
 import { onMounted, ref } from 'vue';
-import { getCurrentView, getCurrentMap, clearMapDraw, currentProjCodefromLonLat } from '../../../components/jsTool/mapTool';
+import { getCurrentMap } from '../../../components/jsTool/mapTool';
+import { clearMapDraw } from '../../../components/jsTool/LayerTool';
+import { viewAnimation } from '../../../components/jsTool/ViewTool';
+import { currentProjCodefromLonLat } from '../../../components/jsTool/turf';
 import { mapConfig } from '../../../components/commonSetting/config';
+import { watchDomChange } from '../../../components/jsTool/CommonUtils';
 export default {
     setup() {
         let heightContent = ref(0);
         // 回到中心
         let goZoom = () => {
-            getCurrentView().setCenter(currentProjCodefromLonLat(mapConfig.center));
-            getCurrentView().setZoom(mapConfig.zoom);
+            let { flyTo } = viewAnimation({ center: currentProjCodefromLonLat(mapConfig.center) });
+            flyTo()
         }
         // 清空绘制数据
         let clearLayer = () => {
             clearMapDraw()
         }
+        // 获取图片
         let getCanvasMap = () => {
             getCurrentMap().once('postcompose', function (event) {
                 let canvas = event.context.canvas
@@ -58,9 +64,11 @@ export default {
             dom.style.height = dom.clientHeight + 'px';
             heightContent.value = dom.clientHeight;
         }
+
         onMounted(() => {
-            // 伸缩 内容 高度
-            contentBoxHeight();
+            let targetNode = document.querySelector('.longitudinalBarCenter');
+            // 绑定 dom 变化 监听事件
+            watchDomChange({ targetNode, callback: contentBoxHeight });
         })
         return {
             // 伸缩 内容 高度
@@ -78,7 +86,6 @@ export default {
 .longitudinalBar {
     width: 35px;
     padding: 3px;
-    // background-color: red;
     .longitudinalBarCenter {
         width: 100%;
         overflow: hidden;

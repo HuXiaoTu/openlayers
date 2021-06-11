@@ -1,3 +1,17 @@
+// 引入自定义 字体文件
+@font-face
+{
+    font-family: 'myIcon';
+    src: url('../../../public/icon/iconfont.ttf')format('truetype'),
+}
+.iconfot{
+    font-family: "myIcon";
+    font-size: 14px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 // 初始化
 @import './commonSass.scss';
 // 自定义组件 样式

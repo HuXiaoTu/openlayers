@@ -1376,3 +1376,19 @@ export function getMaxOrMinData({ defaultSetting, dataValueMax, dataValueMin }, 
     if (!state) mainVue.popUp({ message: '值域范围有误或间隔不满足，已重新配置间隔值' })
     return { max, min, step }
 }
+
+/**
+ * 监听某个dom 的变化 处理相关事宜
+ * @param {any} targetNode      要监听的dom  
+ * @param {any} callback        变化后的回调
+ * @param {any} childList       监听的变化项
+ * 
+ */
+export const watchDomChange = ({ targetNode, callback, childList = true }) => {
+    // 观察器的配置（需要观察什么变动）
+    const config = { childList: true, };
+    // 创建一个观察器实例并传入回调函数
+    const observer = new MutationObserver(callback);
+    // 开始观察目标节点
+    observer.observe(targetNode, config);
+}

@@ -1,17 +1,14 @@
 import 'ol/ol.css';
 import { Map, View } from 'ol';
-import { OSM, Stamen, XYZ } from 'ol/source';
-import { TileWMS } from 'ol/source';
+import { OSM, XYZ } from 'ol/source';
 import TileLayer from 'ol/layer/Tile';
 import LayerGroup from 'ol/layer/Group';
 import VectorLayer from 'ol/layer/Vector';
 import { Vector as VectorSource } from "ol/source";
 
-import Stroke from 'ol/style/Stroke';
 
 import { format } from "ol/coordinate";
-import { boundingExtent } from 'ol/extent';
-import { fromLonLat, transformExtent } from 'ol/proj';
+import { fromLonLat } from 'ol/proj';
 
 import MousePosition from "ol/control/MousePosition.js";
 import { DragRotateAndZoom, defaults as defaultInteractions, } from 'ol/interaction';
@@ -24,11 +21,17 @@ let map = null;
 let view = null;
 
 // 图层------------------------------------------------------------------
-// 矢量图层
+// 矢量图层(展示)
 export const VectorLayerShow = new VectorLayer({
     renderMode: "image",
     source: new VectorSource({ wrapX: false }),
 });
+// 矢量图层(绘制)
+export const VectorLayerDraw = new VectorLayer({
+    renderMode: "image",
+    source: new VectorSource({ wrapX: false }),
+});
+
 // 地图图层 XYZ
 export const XYZlayer = new TileLayer({
     source: new XYZ({
@@ -66,18 +69,17 @@ export const dataOverlayDisplayGroup = new LayerGroup({
 export const dataOverlayDrawGroup = new LayerGroup({
     groupName: "dataOverlayDrawGroup",
     zIndex: 300,
+    layers: [VectorLayerDraw]
 });
 
 // 地图插件---------------------------------------------------------------
 // 按住Shift+Drag以围绕其中心旋转和缩放地图
 const dragRotateAndZoomControl = () => {
-    return new DragRotateAndZoom({
-        className: 'dragRotateAndZoom',
-    })
+    return new DragRotateAndZoom()
 }
 //鼠标经过显示经纬度
-const mousePositionControl = (target) => {
-    let parentDom = document.querySelector(`#${target}`);
+const mousePositionControl = ({ target }) => {
+    let parentDom = target;
     let lonLatShowDom = document.createElement('div');
     lonLatShowDom.setAttribute('id', 'mouse-position');
     parentDom.appendChild(lonLatShowDom);
@@ -110,18 +112,15 @@ const scaleLineControl = () => {
     // degrees      ——    以度、分、秒为单位
     return new ScaleLine({
         units: 'metric',
-        bar: true,
-        steps: 4
     })
 }
 //  全屏
-const fullScreenControl = () => {
-    // metric    ——    通用的，以千米为单位
-    // us    ——    美国单位
-    // nautical    ——    航海单位
-    // imperial    ——    英制单位
-    // degrees    ——    以度、分、秒为单位
-    return new FullScreen()
+const fullScreenControl = ({ target }) => {
+    return new FullScreen({
+        target,
+        className: 'customBtn',
+        tipLabel: '全屏'
+    })
 }
 
 
@@ -131,6 +130,11 @@ const fullScreenControl = () => {
  */
 export const initialMap = (target = '') => {
     if (!target) return;
+
+    // 组件 按钮追加到指定 dom
+    let targetDom = document.querySelector('.longitudinalBarCenter');
+    // 经纬度显示 追加到 指定 dom
+    let targetDomLonLat = document.querySelector(`#${target}`)
 
     view = new View({
         projection: 'EPSG:3857',                                // 投影类型
@@ -146,11 +150,12 @@ export const initialMap = (target = '') => {
         view,
         target: 'mapBox',
         // 插件注册
-        controls: defaultControls().extend([overviewMapControl(), mousePositionControl(target), scaleLineControl(), fullScreenControl()]),
+        controls: defaultControls().extend([overviewMapControl(), mousePositionControl({ target: targetDomLonLat }), scaleLineControl(), fullScreenControl({ target: targetDom })]),
         // 按住Shift+Drag以围绕其中心旋转和缩放地图
         interactions: defaultInteractions().extend([dragRotateAndZoomControl()]),
     });
 }
+
 
 /**
  *获取当前map 
@@ -162,9 +167,8 @@ export const getCurrentMap = () => {
  *获取当前view 
  */
 export const getCurrentView = () => {
-    return view;
+    return getCurrentMap().getView();
 };
-
 /**
 * @description 获取当前地图投影code
 * @returns 当前地图投影code
@@ -174,33 +178,4 @@ export function getCurrentProjCode(map = null) {
         return map.getView().getProjection().getCode();
     }
     return getCurrentMap().getView().getProjection().getCode();
-}
-
-/**
- * 给入经纬度坐标点 返回当前投影坐标点
- * @param {*} coordinate 经纬度坐标点
- * @returns 当前投影坐标点
- */
-export function currentProjCodefromLonLat(coordinate) {
-    return fromLonLat(coordinate, getCurrentProjCode())
-}
-
-/**
-* @description 清空 绘制图层数据
-*/
-export const clearMapDraw = () => {
-    let groupObj = map.getLayerGroup();
-    let groupList = groupObj.getLayers();
-    let groupArray = groupList.getArray();
-    // 循环所有 group
-    groupArray.forEach(ele => {
-        let name = ele.get('groupName');
-        // 跳过 底图 group
-        if (name === 'dataOverlayGroup') return;
-        let arr = ele.getLayersArray();
-        // 跳过空 group
-        if (arr.length === 0) return;
-        // 获取group 所有layer 执行 清空layer操作
-        arr.forEach(item => item.getSource().clear());
-    });
 }
