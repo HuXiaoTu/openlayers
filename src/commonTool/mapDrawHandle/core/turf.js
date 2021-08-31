@@ -1,5 +1,5 @@
 import { fromLonLat } from 'ol/proj';
-import { getCurrentProjCode } from './mapTool';
+import { getCurrentProjCode } from './mapTool.js';
 
 /**
  * 给入经纬度坐标点 返回当前投影坐标点

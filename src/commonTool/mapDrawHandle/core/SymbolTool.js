@@ -2,7 +2,7 @@ import { fromLonLat, toLonLat } from 'ol/proj';
 import { getCurrentMap } from "./mapTool.js";
 
 /**
- * @description 获取坐标点所在经度和屏幕垂直向上方向的偏移角度(单纯替换王印方法)
+ * @description 获取坐标点所在经度和屏幕垂直向上方向的偏移角度
  * @param {*} coor 坐标点
  * @returns
  */

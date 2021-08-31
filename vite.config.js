@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import styleImport from 'vite-plugin-style-import'
+import path from 'path';
+
+// import styleImport from 'vite-plugin-style-import'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,6 +23,7 @@ export default defineConfig({
     //   }]
     // })
   ],
+  // 设置全局的css文件
   css: {
     preprocessorOptions: {
       scss: {
@@ -28,4 +31,11 @@ export default defineConfig({
       }
     }
   },
+  // 设置别名
+  resolve: {
+    alias: {
+      '@': path.resolve("./src"),
+      '#': path.resolve("./public"),
+    }
+  }
 })

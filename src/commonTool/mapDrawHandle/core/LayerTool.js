@@ -1,4 +1,4 @@
-import { getCurrentMap } from "./mapTool";
+import { getCurrentMap } from "./mapTool.js";
 
 /**
 * @description 清空 绘制图层数据

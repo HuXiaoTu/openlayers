@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue'
 
 // mockJS 数据拦截
-import './assets/mockJS/mock';
+import './axios/mockJS/mock.js';
 
 import router from './route/route'
 import ElementPlus from 'element-plus';

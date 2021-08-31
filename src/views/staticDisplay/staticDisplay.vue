@@ -27,7 +27,7 @@ export default {
         btnClick({ name, type }) {
             // 根据类型 获取数据
             getData('/windTemperature', { type }).then(data => {
-                console.info('>>>> ws >>>⚡⚡ data', data)
+                console.info('>>>> ws >>>⚡⚡ data', data, type)
                 drawFeatures({ type, data })
             })
         }

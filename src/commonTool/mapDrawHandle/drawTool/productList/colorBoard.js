@@ -1,9 +1,9 @@
 import GeoJSON from "ol/format/GeoJSON";
 import { Fill, Style } from "ol/style";
-import { getData } from '../../../axios/axios/axiosList.js';
-import { getCurrentProjCode } from "../../../components/jsTool/mapTool.js";
-import FeatureTool from "../../../components/jsTool/FeatureTool.js";
-import { transFeatureByProj } from "../../../components/jsTool/SymbolTool.js";
+import { getData } from '@/axios/axios/axiosList.js';
+import { getCurrentProjCode } from "../../core/mapTool.js";
+import FeatureTool from "../../core/FeatureTool.js";
+import { transFeatureByProj } from "../../core/SymbolTool.js";
 
 /**
  * @description 绘制色斑图

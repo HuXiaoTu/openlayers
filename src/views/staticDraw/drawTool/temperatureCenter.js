@@ -1,5 +1,5 @@
-import StyleTool from "../../../components/jsTool/SymbolTool.js";
-import DefaultOnlyDeleteMenu from "../../../components/openlayerTool/menu/mailMenu.js";
+import StyleTool from "../../../commonTool/mapDrawHandle/core/SymbolTool.js";
+import DefaultOnlyDeleteMenu from "../../../commonTool/openlayerTool/menu/mailMenu.js";
 
 // import BaseDrawPoint from "../../../utils/drawTool/BaseDrawPoint";
 // import LeftRightDraw from "../../../utils/interacts/LeftRightDraw";

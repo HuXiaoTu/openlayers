@@ -2,10 +2,10 @@ import Draw from 'ol/interaction/Draw';
 import { Vector as VectorSource } from 'ol/source';
 import { Vector as VectorLayer } from 'ol/layer';
 import { Circle as CircleStyle, Fill, Stroke, Style, Icon, Text, } from 'ol/style';
-
-import { VectorLayerDraw, getCurrentMap } from "../mapTool";
 import { Feature } from 'ol';
 import Point from 'ol/geom/Point';
+
+import { VectorLayerDraw, getCurrentMap } from "./mapTool.js";
 
 // 初始化 画笔
 export class drawTool {

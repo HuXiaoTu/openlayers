@@ -23,12 +23,13 @@
 <script>
 import { saveAs } from 'file-saver';
 import { onMounted, ref } from 'vue';
-import { getCurrentMap } from '../../../components/jsTool/mapTool';
-import { clearMapDraw } from '../../../components/jsTool/LayerTool';
-import { viewAnimation } from '../../../components/jsTool/ViewTool';
-import { currentProjCodefromLonLat } from '../../../components/jsTool/turf';
-import { mapConfig } from '../../../components/commonSetting/config';
-import { watchDomChange } from '../../../components/jsTool/CommonUtils';
+
+import { getCurrentMap } from '../../../commonTool/mapDrawHandle/core/mapTool';
+import { clearMapDraw } from '../../../commonTool/mapDrawHandle/core/LayerTool';
+import { viewAnimation } from '../../../commonTool/mapDrawHandle/core/ViewTool';
+import { currentProjCodefromLonLat } from '../../../commonTool/mapDrawHandle/core/turf';
+import { mapConfig } from '../../../commonTool/commonSetting/config';
+import { watchDomChange } from '../../../commonTool/mapDrawHandle/core/CommonUtils';
 export default {
     setup() {
         let heightContent = ref(0);

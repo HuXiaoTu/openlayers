@@ -6,7 +6,7 @@
     </div>
 </template>
 <script>
-import { initialMap } from '../../components/jsTool/mapTool.js';
+import { initialMap } from '../../commonTool/mapDrawHandle/core/mapTool.js';
 export default {
     mounted() {
         let map = initialMap('mapBox');

@@ -1,6 +1,6 @@
 
-import CommonUtils from '../../../components/jsTool/CommonUtils.js';
-import GridValue from '../../../components/jsTool/drawTool/GridValue.js';
+import CommonUtils from '../../core/CommonUtils.js';
+import GridValue from '../GridValue.js';
 /**
  * @description 绘制格点值
  */

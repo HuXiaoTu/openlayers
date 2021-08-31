@@ -1,10 +1,10 @@
 import { ElMessage } from 'element-plus'
-import { VectorLayerShow } from '../../../components/jsTool/mapTool.js';
 
-import windTemperature from '../drawTool/windTemperature.js';
-import gridPoint from '../drawTool/gridPoint.js'
-import colorBoard from '../drawTool/colorBoard.js'
-import isoLine from '../drawTool/isoLine.js'
+import { VectorLayerShow } from '../../../commonTool/mapDrawHandle/core/mapTool.js';
+import windTemperature from '../../../commonTool/mapDrawHandle/drawTool/productList/windTemperature.js';
+import gridPoint from '../../../commonTool/mapDrawHandle/drawTool/productList/gridPoint.js';
+import colorBoard from '../../../commonTool/mapDrawHandle/drawTool/productList/colorBoard.js';
+import isoLine from '../../../commonTool/mapDrawHandle/drawTool/productList/isoLine.js';
 
 let classAll = {
     // 风温
@@ -24,7 +24,7 @@ let classAll = {
  */
 export const drawFeatures = ({ type, data }) => {
     let handel = classAll[type];
-    if (!handel) return ElMessage('⚡⚡该功能暂时未开发');;
+    if (!handel) return ElMessage('⚡⚡该功能暂时未开发');
 
     let features = new handel().setData(data).initFeatures();
     // 如果为 异步 需要 then 接受

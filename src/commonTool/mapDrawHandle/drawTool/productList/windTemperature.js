@@ -2,11 +2,13 @@ import { Feature } from "ol";
 import { LineString, Point, Polygon } from "ol/geom";
 import { fromLonLat } from "ol/proj";
 import { Circle as CircleStyle, Fill, Stroke, Style, Text } from "ol/style";
-import CommonUtils from '../../../components/jsTool/CommonUtils.js';
-import { coordinate2Coordinate, getDeviationAngle } from '../../../components/jsTool/SymbolTool.js';
-import { getCurrentMap, getCurrentProjCode } from "../../../components/jsTool/mapTool.js";
-import FeatureTool from "../../../components/jsTool/FeatureTool.js";
-import GridValue from "../../../components/jsTool/drawTool/GridValue.js";
+
+import CommonUtils from '../../core/CommonUtils.js';
+import { coordinate2Coordinate, getDeviationAngle } from '../../core/SymbolTool.js';
+import { getCurrentMap, getCurrentProjCode } from "../../core/mapTool.js";
+import FeatureTool from "../../core/FeatureTool.js";
+
+import GridValue from "../GridValue.js";
 
 /**
  * @description 绘制风温

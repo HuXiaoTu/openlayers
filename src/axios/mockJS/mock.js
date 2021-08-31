@@ -1,5 +1,5 @@
 import Mock from 'mockjs';
-import { colorBoard, isoLine } from '../../../public/colorBoard.js'
+import { colorBoard, isoLine } from '#/colorBoard.js'
 const Random = Mock.Random;
 
 

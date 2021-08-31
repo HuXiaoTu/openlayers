@@ -1,5 +1,5 @@
 <template>
-    <!-- 静态显示页面 -->
+    <!-- 点形状绘制页面 -->
     <div class="staticDrawMenu">
         <!-- 控制 按钮 区域 -->
         <div class="staticDrawMenuTop">
@@ -37,7 +37,7 @@
 <script>
 import { onMounted, ref } from 'vue';
 import { symbolList } from '../../assets/staticData/staticData';
-import { drawTool } from '../../components/jsTool/drawTool/drawTool';
+import { drawTool } from '../../commonTool/mapDrawHandle/core/drawTool.js';
 export default {
     data() {
         return {
