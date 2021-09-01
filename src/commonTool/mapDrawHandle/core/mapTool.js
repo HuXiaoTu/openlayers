@@ -14,7 +14,7 @@ import MousePosition from "ol/control/MousePosition.js";
 import { DragRotateAndZoom, defaults as defaultInteractions, } from 'ol/interaction';
 import { FullScreen, ScaleLine, OverviewMap, defaults as defaultControls } from 'ol/control';
 
-import { mapConfig } from '../../commonSetting/config.js';
+import { mapConfig } from '../../commonConfig/config.js';
 
 
 let map = null;

@@ -149,19 +149,6 @@ export default class CommonUtils {
      * @modify 修改平滑算法改用CatmullRom cardinal算法 since 2019年4月1日
      */
     static getSmoothCoordinates(geometry) {
-        /* if (geometry instanceof LineString) {
-            let coords = geometry.getCoordinates();
-            let smooth = new NatCubic();
-            return smooth.getPointValues(coords, 0, 1);
-        } else if (geometry instanceof Polygon) {
-            let coords = geometry.getCoordinates()[0];
-            coords.pop();//去掉重复点
-            let smooth = new NatCubicClosed();
-            return smooth.getPointValues(coords, 0, 1);
-        } else if (geometry instanceof Point) {
-            let coords = geometry.getCoordinates();
-            return coords;
-        } */
         if (geometry instanceof LineString) {
             let coords = geometry.getCoordinates();
             let first = geometry.getFirstCoordinate();
@@ -301,36 +288,6 @@ export default class CommonUtils {
             return null;
         }
     }
-
-    /**
-     * @description 返回 LineString or Polygon GeoJSON 的交点.
-     * @param {*} line1 any LineString or Polygon
-     * @param {*} line2 any LineString or Polygon
-     */
-    // static lineIntersect(geo1, geo2) {
-    //     let g1, g2;
-    //     if (geo1 instanceof LineString) {
-    //         g1 = turf.lineString([geo1.getCoordinates()]);
-    //     } /* else if (geo1 instanceof Polygon) {
-    //     }  */
-    //     else {
-    //         return new Promise((resolve, reject) => {
-    //             reject(`Error: this methode does not support the type of : ${geo1}`);
-    //         });
-    //     }
-    //     if (geo2 instanceof LineString) {
-    //         g2 = turf.lineString([geo2.getCoordinates()]);
-    //     } /* else if (geo1 instanceof Polygon) {
-    //     }  */else {
-    //         return new Promise((resolve, reject) => {
-    //             reject(`Error: this methode does not support the type of : ${geo2}`);
-    //         });
-    //     }
-
-    //     let intersects = turf.lineIntersect(g1, g2);
-    //     // eslint-disable-next-line no-console
-    //     console.log(intersects);
-    // }
 
     /**
      * @description 创建一个等腰三角形
@@ -750,7 +707,7 @@ export default class CommonUtils {
 
                 start = [80, lat[i]];
                 end = [90, lat[i]];
-                pixel10Lon = getLonLatLength(start, end, map);
+                pixel10Lon = this.getLonLatLength(start, end, map);
                 pixelNum = pixel10Lon / symbolLength;
 
                 for (let j = 0; j < lon.length; j++) {
@@ -1035,40 +992,6 @@ export default class CommonUtils {
     }
 
     /**
- * 节流Throttle
- */
-    // module.exports.throttle = (fn, delay) => {
-    //     // 定义上次触发时间
-    //     let last = 0;
-    //     return (...args) => {
-    //       const now = + Date.now();
-    //       console.log("call", now, last, delay);
-    //       if (now > last + delay) {
-    //         last = now;
-    //         fn.apply(this, args);
-    //       }
-    //     };
-    //   };
-    //   /**
-    //    * 防抖Debounce
-    //    */
-    //   module.exports.debounce = (fn, delay) => {
-    //     let timer;
-    //     return (...args) => {
-    //       // 判断定时器是否存在，清除定时器
-    //       if (timer) {
-    //         clearTimeout(timer);
-    //       }
-
-    //       // 重新调用setTimeout
-    //       timer = setTimeout(() => {
-    //         fn.apply(this, args);
-    //       }, delay);
-    //     };
-    //   };
-
-
-    /**
     * @desc 函数节流
     * @param func 函数
     * @param wait 延迟执行毫秒数
@@ -1210,21 +1133,22 @@ export default class CommonUtils {
         }
         return result;
     }
-}
 
-/**
- * @description 计算两个经纬度点的屏幕距离
- * @param {*} lonlat1 
- * @param {*} lonlat2 
- * @param {Map} map 
- */
-export function getLonLatLength(lonlat1, lonlat2, map) {
-    let proj = map.getView().getProjection().getCode();
-    let coor1 = fromLonLat(lonlat1, proj);
-    let pixel1 = map.getPixelFromCoordinate(coor1);
-    let coor2 = fromLonLat(lonlat2, proj);
-    let pixel2 = map.getPixelFromCoordinate(coor2);
-    return CommonUtils.getP2PDistance(pixel1, pixel2);
+    /**
+     * @description 计算两个经纬度点的屏幕距离
+     * @param {*} lonlat1 
+     * @param {*} lonlat2 
+     * @param {Map} map 
+     */
+    static getLonLatLength(lonlat1, lonlat2, map) {
+        let proj = map.getView().getProjection().getCode();
+        let coor1 = fromLonLat(lonlat1, proj);
+        let pixel1 = map.getPixelFromCoordinate(coor1);
+        let coor2 = fromLonLat(lonlat2, proj);
+        let pixel2 = map.getPixelFromCoordinate(coor2);
+        return CommonUtils.getP2PDistance(pixel1, pixel2);
+    }
+
 }
 
 /**
@@ -1233,97 +1157,6 @@ export function getLonLatLength(lonlat1, lonlat2, map) {
  */
 export function blockRightClickMenu(dom) {
     dom.oncontextmenu = function (e) { return false; }
-}
-
-
-
-/**
- * @description 获取当前用户权限信息
- */
-export function getCurrentAuthority() {
-    let allNavs = sessionStorage.getItem("allNavs");
-    if (!allNavs) {//用户信息不存在则跳转到登录界面
-        return false
-    } else {
-        return JSON.parse(allNavs);
-    }
-}
-
-/**
- * @description 获取当前用户值班信息
- */
-export function getCurrentUserDutyInfo() {
-    let userDutyInfo = sessionStorage.getItem("userDutyInfo");
-    if (!userDutyInfo) {//用户信息不存在则跳转到登录界面
-        return false
-    } else {
-        return JSON.parse(userDutyInfo);
-    }
-}
-
-
-/**
- * @description 太极接口需要传递登录账号密码
- */
-export function getLoginInfoApi() {
-    let LoginInfoApi = sessionStorage.getItem("LoginInfoApi");
-    if (!LoginInfoApi) {//用户信息不存在则跳转到登录界面
-        return false
-    } else {
-        return JSON.parse(LoginInfoApi);
-    }
-}
-
-
-/**
- * @description 获取utc时间 的本周周几
- * @param {*} day   获取周几 
- * @param {*} date 指定utc时间 
- * @returns 返回dayjs对象 可以用.format(dayjsFormat.nyrsfm)进行格式化
- */
-export function getUTCday(day = '1', date = '',) {
-    let time = '';
-    if (date) time = getUTC(date);
-    else time = getUTC();
-
-    let nextWeek = '';
-    if (time.day() == 0) nextWeek = getUTC(time).day(0).subtract((7 - Number(day)), 'day');
-    else nextWeek = getUTC(time).day(1).add((0 + Number(day)), 'day');
-
-    return nextWeek;
-}
-/**
- * @description 获取北京时间 的本周周几
- * @param {*} day   获取周几 
- * @param {*} date  北京时间
- * @returns 返回dayjs对象 可以用.format(dayjsFormat.nyrsfm)进行格式化
- */
-export function getCSTday(day = '1', date = '',) {
-    let time = '';
-    if (date) time = getCST(date);
-    else time = getCST();
-
-    let nextWeek = '';
-    if (time.day() == 0) nextWeek = getCST(time).day(0).subtract((7 - Number(day)), 'day');
-    else nextWeek = getCST(time).day(0).add((0 + Number(day)), 'day');
-
-    return nextWeek;
-}
-/**
- * 获取给定文本在 页面中 所占用的宽度
- * @param {*} text 给定文本
- * @param {*} fontSize 文本大小(数字)
- * @param {*} fontFamily 文本类型
- */
-export function getFontDocumentWidth(text, fontSize = "12", fontFamily = "Lucida") {
-    let body = document.querySelector('body');
-    let div = document.createElement('div');
-    div.style.cssText = `position:fixed;top:-1000px;left:-1000px;font-size:${fontSize}px;font-family:${fontFamily};`;
-    div.innerHTML = text;
-    body.appendChild(div);
-    let width = div.offsetWidth;
-    body.removeChild(div);
-    return width;
 }
 
 /**
@@ -1343,52 +1176,3 @@ export let stopContextmenuFunction = evt => {
     }
     return false;
 };
-
-/**
- * 获取最大值 最小值 间隔
- * @param {any} data            interfeceinfo 数据  
- * @param {any} rangeCount      取值几份 默认 10 等分
- * 
- * @memberOf TableFunction
- */
-export function getMaxOrMinData({ defaultSetting, dataValueMax, dataValueMin }, rangeCount = 10) {
-    // 获取计算过后的色彩列表和范围
-    let max = 0;
-    let min = 0;
-    // 为数据值域范围时
-    if (defaultSetting.range == "range") {
-        max = Number(dataValueMax);
-        min = Number(dataValueMin);
-    }
-    // 为自定义间隔时
-    else if (defaultSetting.range == "definition") {
-        max = Number(defaultSetting.maxRange ?? dataValueMax);
-        min = Number(defaultSetting.minRange ?? dataValueMin);
-    }
-    else if (defaultSetting.range == "appoint") {
-        max = Number(dataValueMax);
-        min = Number(dataValueMin);
-    }
-    if ((!max && max !== 0) || (!min && min !== 0) || max === min) throw (`最大值${dataValueMax}最小值${dataValueMin}间隔有误,`);
-    let settingsStep = Number(defaultSetting.contourStep ? defaultSetting.contourStep : defaultSetting.step);
-    if (settingsStep == 0) settingsStep = 10000;
-    let { state, step } = this.handleDataState(max, min, settingsStep, rangeCount);
-    if (!state) mainVue.popUp({ message: '值域范围有误或间隔不满足，已重新配置间隔值' })
-    return { max, min, step }
-}
-
-/**
- * 监听某个dom 的变化 处理相关事宜
- * @param {any} targetNode      要监听的dom  
- * @param {any} callback        变化后的回调
- * @param {any} childList       监听的变化项
- * 
- */
-export const watchDomChange = ({ targetNode, callback, childList = true }) => {
-    // 观察器的配置（需要观察什么变动）
-    const config = { childList: true, };
-    // 创建一个观察器实例并传入回调函数
-    const observer = new MutationObserver(callback);
-    // 开始观察目标节点
-    observer.observe(targetNode, config);
-}

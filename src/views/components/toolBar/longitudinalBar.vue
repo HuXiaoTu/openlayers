@@ -28,8 +28,8 @@ import { getCurrentMap } from '../../../commonTool/mapDrawHandle/core/mapTool';
 import { clearMapDraw } from '../../../commonTool/mapDrawHandle/core/LayerTool';
 import { viewAnimation } from '../../../commonTool/mapDrawHandle/core/ViewTool';
 import { currentProjCodefromLonLat } from '../../../commonTool/mapDrawHandle/core/turf';
-import { mapConfig } from '../../../commonTool/commonSetting/config';
-import { watchDomChange } from '../../../commonTool/mapDrawHandle/core/CommonUtils';
+import { mapConfig } from '../../../commonTool/commonConfig/config';
+import { watchDomChange } from '../../../commonTool/commonUtil/domHandle.js';
 export default {
     setup() {
         let heightContent = ref(0);

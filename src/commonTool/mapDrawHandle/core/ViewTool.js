@@ -1,6 +1,6 @@
 import { easeIn as AnimationIn, easeOut as AnimationOut } from 'ol/easing';
 import { getCurrentView } from "./mapTool.js";
-import { mapConfig } from "../../commonSetting/config.js";
+import { mapConfig } from "../../commonConfig/config.js";
 
 /**
 * @description view 动画效果

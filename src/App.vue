@@ -28,7 +28,7 @@ import TopMenu from './views/components/topMenu/top.vue';
 import LongitudinalBar from './views//components/toolBar/longitudinalBar.vue';
 
 import { onMounted } from 'vue';
-import { watchDomChange } from './commonTool/mapDrawHandle/core/CommonUtils';
+import { watchDomChange } from './commonTool/commonUtil/domHandle.js';
 export default {
     components: {
         MapView,
