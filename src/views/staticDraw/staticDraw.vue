@@ -19,10 +19,7 @@
                 :disabled="isTooltip"
             >
                 <span
-                    :class="{
-                        'staticDrawMenuBtn': true,
-                        'animationOperate': animationOperate,
-                    }"
+                    :class="{'staticDrawMenuBtn': true,'animationOperate': animationOperate,}"
                     :key="index"
                     :draggable="animationOperate"
                     @click="clickDraw($event,item)"
@@ -37,7 +34,7 @@
     </div>
 </template>
 <script>
-import { onMounted, ref } from 'vue';
+import { onBeforeUnmount, ref } from 'vue';
 import { symbolList } from '../../assets/staticData/staticData';
 import { drawTool } from '../../commonTool/mapDrawHandle/core/drawTool.js';
 export default {
@@ -48,12 +45,16 @@ export default {
         }
     },
     setup() {
+        // 绘制类
+        let drawToolHandel = new drawTool();
 
         // 编辑 动画
         let animationOperate = ref(0);
         animationOperate.value = false;
+        // 是否显示 提示信息
+        let isTooltip = ref(0);
+        isTooltip.value = false;
 
-        let drawToolHandel = new drawTool();
         // 处理 拖拽 事件绑定
         let dragEvent = () => {
 
@@ -160,6 +161,9 @@ export default {
 
         // 设置按钮触发
         let settingsBtn = () => {
+            // 取消绘制状态
+            drawToolHandel.clearInteraction();
+
             animationOperate.value = !animationOperate.value;
             // 当为 编辑状态 绑定 拖拽 事件
             if (animationOperate.value) dragEvent();
@@ -173,10 +177,6 @@ export default {
             }
         }
 
-        // 是否显示 提示信息
-        let isTooltip = ref(0);
-        isTooltip.value = false;
-
         // 绘制按钮触发
         let clickDraw = (e, { fontFamily }) => {
             // 如果在编辑状态 取消绘制状态
@@ -187,9 +187,11 @@ export default {
             let dom = e.currentTarget;
             let select = box.querySelector('.activeBtn');
             if (select && dom != select) select.classList.remove('activeBtn');
+
             // flg 当前选中状态
             let flg = dom.classList.toggle('activeBtn');
-            if (!flg) return;
+            // 取消绘制状态
+            if (!flg) return drawToolHandel.clearInteraction();
 
             //创建creator
             // let svg1 = document.querySelector('#icontianqi-1');
@@ -211,6 +213,7 @@ export default {
 
             // 开始绘制
             drawToolHandel.setImg(fontFamily).initDraw({ type: 'Point' });
+
             // console.info('>>>> ws >>>⚡⚡ svg.ownerDocument', )
 
             // let canvas = document.createElement('canvas');
@@ -231,7 +234,9 @@ export default {
 
         }
 
-        onMounted(() => {
+        onBeforeUnmount(() => {
+            // 取消绘制状态
+            drawToolHandel.clearInteraction();
         })
         return {
             isTooltip,
