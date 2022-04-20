@@ -7,12 +7,13 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^1.1.4",
     "axios": "^0.21.1",
-    "element-plus": "^1.0.2-beta.40",
+    "element-plus": "2.1.10",
     "file-saver": "^2.0.5",
     "ol": "^5.3.3",
-    "vue": "^3.0.5",
-    "vue-router": "^4.0.6",
+    "vue": "^3.2.0",
+    "vue-router": "^4.0.14",
     "vuex": "^4.0.0"
   },
   "devDependencies": {

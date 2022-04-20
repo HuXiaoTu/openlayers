@@ -3,7 +3,9 @@
     <div class="staticDrawMenu">
         <!-- 控制 按钮 区域 -->
         <div class="staticDrawMenuTop">
-            <span class="settingBtn el-icon-s-tools" @click="settingsBtn"></span>
+            <el-icon class="settingBtn">
+                <tools @click="settingsBtn" />
+            </el-icon>
         </div>
         <!-- 按钮 展示列表 -->
         <div class="staticDrawMenuBtns">

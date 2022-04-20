@@ -10,11 +10,11 @@
         active-text-color="#ffd04b"
     >
         <el-menu-item index="/">主页</el-menu-item>
-        <el-submenu index="2">
-            <template #title>openlayers</template>
+        <el-sub-menu index="2">
+            <template #title>OpenLayers</template>
             <el-menu-item index="/staticDisplay">展示</el-menu-item>
             <el-menu-item index="/staticDraw">绘制</el-menu-item>
-        </el-submenu>
+        </el-sub-menu>
     </el-menu>
 </template>
 <script>

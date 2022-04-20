@@ -4,19 +4,19 @@
         <!-- 按钮区域 -->
         <div class="longitudinalBarCenter">
             <span class="longitudinalBarCenterBtn" title="回到中心" @click="goZoom">
-                <i class="el-icon-s-home"></i>
+                <home-filled />
             </span>
             <span class="longitudinalBarCenterBtn" title="清空数据" @click="clearLayer">
-                <i class="el-icon-refresh"></i>
+                <refresh-left />
             </span>
             <span class="longitudinalBarCenterBtn" title="获取图片" @click="getCanvasMap">
-                <i class="el-icon-picture"></i>
+                <Picture />
             </span>
             <!-- 有底图 动态追加到下面的按钮 -->
         </div>
         <!-- 伸缩按钮 -->
         <div class="longitudinalBarShow" @click="showList">
-            <i class="el-icon-menu"></i>
+            <Menu />
         </div>
     </div>
 </template>
@@ -72,8 +72,6 @@ export default {
             watchDomChange({ targetNode, callback: contentBoxHeight });
         })
         return {
-            // 伸缩 内容 高度
-            heightContent,
             goZoom,
             clearLayer,
             getCanvasMap,
