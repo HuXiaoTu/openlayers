@@ -314,9 +314,10 @@ export default {
         }
     }
     .staticDrawMenuList {
-        max-height: 200px;
+        padding: 5px;
+        max-height: 250px;
         overflow: hidden;
-        transition: max-height 0.3s linear;
+        transition: all 0.3s linear;
         .staticDrawMenuBtn {
             cursor: pointer;
             display: inline-block;
@@ -336,6 +337,7 @@ export default {
     }
     .animationList {
         max-height: 0;
+        padding: 0;
     }
 }
 </style>
