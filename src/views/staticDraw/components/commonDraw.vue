@@ -3,6 +3,7 @@
     <div class="staticDrawMenuSpot">
         <!-- 顶部 显示 操作栏 -->
         <div class="staticDrawMenuTop">
+            <!-- 提示信息 title 区域 -->
             <span class="staticDrawMenuSpotTitle" @click="changeListState">
                 <span>{{title}}</span>
                 <svg class="icon" :class="{'iconRotate':!showListState}" aria-hidden="true">
@@ -47,6 +48,7 @@
 
 <script>
 import { ref } from '@vue/reactivity';
+import { ElMessage } from 'element-plus';
 
 export default {
     props: {
@@ -258,10 +260,15 @@ export default {
         }
 
         // 当前展开状态 默认展开
-        let showListState = ref(true);
+        let showListState = ref(0);
+        showListState.value = symbolList.length === 0 ? false : true;
         // 点击改变状态
         let changeListState = () => {
-            showListState.value = !showListState.value;
+            if (symbolList.length !== 0) showListState.value = !showListState.value;
+            else ElMessage({
+                message: '未查询到数据列表！',
+                type: 'warning',
+            })
         }
 
 
