@@ -26,8 +26,8 @@
 //     },
 // ]
 
-// 静态绘制 符号 列表
-export const symbolList = [
+// 静态绘制 点类 符号 列表
+export const spotList = [
     {
         iconClass: '#icontianqi-1',
         fontFamily: '',
