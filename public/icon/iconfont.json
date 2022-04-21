@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1110453",
+      "name": "右箭头",
+      "font_class": "youjiantou1",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "4608561",
+      "name": "下载,下箭头",
+      "font_class": "iconzhengli-",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "3542175",
+      "name": "右箭头",
+      "font_class": "youjiantou",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
       "icon_id": "11673279",
       "name": "天气",
       "font_class": "tianqi5",

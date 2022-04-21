@@ -3,35 +3,45 @@
     <div class="staticDrawMenuSpot">
         <!-- 顶部 显示 操作栏 -->
         <div class="staticDrawMenuTop">
-            <span class="staticDrawMenuSpotTitle">{{title}} ></span>
-            <!-- 控制 按钮 区域 -->
-            <div class="staticDrawMenuSpotTitleBtn">
-                <el-icon class="settingBtn">
-                    <tools @click="settingsBtn" />
-                </el-icon>
-            </div>
-        </div>
-        <!-- 提示信息 -->
-        <el-tooltip
-            placement="top"
-            v-for="(item, index) in symbolList"
-            :enterable="false"
-            :key="index"
-            :content="item.title"
-            :disabled="isTooltip"
-        >
-            <span
-                :class="{'staticDrawMenuBtn': true,'animationOperate': animationOperate,}"
-                :key="index"
-                :draggable="animationOperate"
-                @click="clickDraw($event,item)"
-                @dblclick.stop
-            >
-                <svg class="icon" aria-hidden="true">
-                    <use :xlink:href="item.iconClass" />
+            <span class="staticDrawMenuSpotTitle" @click="changeListState">
+                <span>{{title}}</span>
+                <svg class="icon" :class="{'iconRotate':!showListState}" aria-hidden="true">
+                    <use xlink:href="#iconyoujiantou1" />
                 </svg>
             </span>
-        </el-tooltip>
+            <!-- 控制 按钮 区域 -->
+            <transition name="el-zoom-in-top">
+                <div v-show="showListState" class="staticDrawMenuSpotTitleBtn">
+                    <el-icon class="settingBtn">
+                        <tools @click="settingsBtn" />
+                    </el-icon>
+                </div>
+            </transition>
+        </div>
+        <!-- 符号列表 -->
+        <div class="staticDrawMenuList" :class="{'animationList':!showListState}">
+            <!-- 提示信息 -->
+            <el-tooltip
+                placement="top"
+                v-for="(item, index) in symbolList"
+                :enterable="false"
+                :key="index"
+                :content="item.title"
+                :disabled="isTooltip"
+            >
+                <span
+                    :class="{'staticDrawMenuBtn': true,'animationOperate': animationOperate,}"
+                    :key="index"
+                    :draggable="animationOperate"
+                    @click="clickDraw($event,item)"
+                    @dblclick.stop
+                >
+                    <svg class="icon" aria-hidden="true">
+                        <use :xlink:href="item.iconClass" />
+                    </svg>
+                </span>
+            </el-tooltip>
+        </div>
     </div>
 </template>
 
@@ -247,14 +257,25 @@ export default {
 
         }
 
+        // 当前展开状态 默认展开
+        let showListState = ref(true);
+        // 点击改变状态
+        let changeListState = () => {
+            showListState.value = !showListState.value;
+        }
+
+
         return {
             // 符号列表
             symbolList,
             animationOperate,
+
             isTooltip,
             settingsBtn,
             clickDraw,
 
+            showListState,
+            changeListState,
         }
     }
 }
@@ -262,25 +283,52 @@ export default {
 
 <style lang="scss" scoped>
 .staticDrawMenuSpot {
-    .staticDrawMenuSpotTitle {
-        margin-bottom: 5px;
-        font-size: 14px;
-    }
-    .staticDrawMenuBtn {
-        cursor: pointer;
-        display: inline-block;
-        padding: 4px 0;
-        font-size: 25px;
-        width: 12%;
-        text-align: center;
-        border-radius: 5px;
-        .icon {
-            border-radius: 5px;
-            border: 1px solid #ccc;
+    .staticDrawMenuTop {
+        .staticDrawMenuSpotTitle {
+            margin-bottom: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            user-select: none;
+            > span {
+                vertical-align: middle;
+            }
+            .icon {
+                width: 15px;
+                height: 15px;
+                margin-left: 10px;
+                vertical-align: middle;
+                transform-origin: center;
+                transform: rotate(90deg);
+                transition: transform 0.3s linear;
+            }
+            .iconRotate {
+                transform: rotate(0deg);
+            }
         }
     }
-    .animationOperate {
-        animation: editAnimation 0.3s linear infinite;
+    .staticDrawMenuList {
+        max-height: 200px;
+        overflow: hidden;
+        transition: max-height 0.3s linear;
+        .staticDrawMenuBtn {
+            cursor: pointer;
+            display: inline-block;
+            padding: 4px 0;
+            font-size: 25px;
+            width: 12%;
+            text-align: center;
+            border-radius: 5px;
+            .icon {
+                border-radius: 5px;
+                border: 1px solid #ccc;
+            }
+        }
+        .animationOperate {
+            animation: editAnimation 0.3s linear infinite;
+        }
+    }
+    .animationList {
+        max-height: 0;
     }
 }
 </style>
