@@ -10,6 +10,7 @@ import { VectorLayerDraw, getCurrentMap } from "./mapTool.js";
 // 初始化 画笔
 export class drawTool {
     constructor() {
+        if (drawTool.instance) return drawTool.instance;
         this.draw = null;
         this.map = getCurrentMap();
         this.layer = VectorLayerDraw;
@@ -31,8 +32,7 @@ export class drawTool {
     // 初始化绘制程序
     initDraw({ type = 'Point' }) {
         // 如果有 清除上次 绘制交互
-        console.info('>>>> ws >>>⚡⚡ this.map', this.map.interactions.getArray())
-        if (this.draw) this.map.removeInteraction(this.draw);
+        this.clearInteraction();
         // 创建交互
         this.addInteraction(type);
     }
@@ -43,6 +43,8 @@ export class drawTool {
             type,
             source: this.layer.getSource(),
         });
+        // 自定义 交互类型 
+        this.draw.set('custom', 'drawImgType');
         this.draw.on('drawend', (event) => {
             let feature = event.feature;
             feature.setStyle(this.initStyle(feature))
@@ -52,33 +54,14 @@ export class drawTool {
 
     // 设置样式
     initStyle(f) {
-        return [
-            new Style({
-                // fill: new Fill({
-                //     color: 'rgba(255, 255, 255, 0.2)',
-                // }),
-                // stroke: new Stroke({
-                //     color: '#ffcc33',
-                //     width: 2,
-                // }),
-                // image: new CircleStyle({
-                //     radius: 7,
-                //     fill: new Fill({
-                //         color: '#ffcc33',
-                //     }),
-                // }),
-
-                text: new Text({
-                    font: '20px myIcon',
-                    text: this.imgClass
-                }),
-            }),
-        ]
+        return []
     }
 
     // 清除交互
     clearInteraction() {
         // 如果有 清除上次 绘制交互
-        if (this.draw) this.map.removeInteraction(this.draw);
+        let drawList = this.map.interactions.getArray();
+        let draw = drawList.find(ele => ele.get('custom') === 'drawImgType');
+        if (draw) this.map.removeInteraction(draw);
     }
 }

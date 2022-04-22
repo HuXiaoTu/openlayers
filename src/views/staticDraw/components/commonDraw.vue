@@ -51,6 +51,7 @@ import { ref } from '@vue/reactivity';
 import { ElMessage } from 'element-plus';
 
 export default {
+    emits: ['drawBtnClick'],
     props: {
         // 绘制类
         drawToolHandel: {
@@ -67,7 +68,7 @@ export default {
             default: '',
         }
     },
-    setup(props) {
+    setup(props, { emit }) {
         // 地图绘制类
         let drawToolHandel = props.drawToolHandel;
         // 符号列表
@@ -83,7 +84,7 @@ export default {
         // 设置按钮触发
         let settingsBtn = () => {
             // 取消绘制状态
-            drawToolHandel.clearInteraction();
+            if (drawToolHandel) drawToolHandel.clearInteraction();
 
             animationOperate.value = !animationOperate.value;
             // 当为 编辑状态 绑定 拖拽 事件
@@ -203,7 +204,7 @@ export default {
         }
 
         // 绘制按钮触发
-        let clickDraw = (e, { fontFamily }) => {
+        let clickDraw = (e, { fontFamily, type }) => {
             // 如果在编辑状态 取消绘制状态
             if (animationOperate.value) return
 
@@ -236,8 +237,10 @@ export default {
             // console.info('>>>> ws >>>⚡⚡ svg.href.baseVal', svg.href)
             // console.info('>>>> ws >>>⚡⚡ svg.href.baseVal', svg.baseVal)
 
+
+            emit('drawBtnClick', { fontFamily, type });
             // 开始绘制
-            drawToolHandel.setImg(fontFamily).initDraw({ type: 'Point' });
+            // drawToolHandel.setImg(fontFamily).initDraw({ type: 'Point' });
 
             // console.info('>>>> ws >>>⚡⚡ svg.ownerDocument', )
 
@@ -317,7 +320,8 @@ export default {
         padding: 5px;
         max-height: 250px;
         overflow: hidden;
-        transition: all 0.3s linear;
+        transition: max-height 0.3s linear;
+        box-sizing: border-box;
         .staticDrawMenuBtn {
             cursor: pointer;
             display: inline-block;
@@ -337,7 +341,7 @@ export default {
     }
     .animationList {
         max-height: 0;
-        padding: 0;
+        padding-bottom: 0;
     }
 }
 </style>
