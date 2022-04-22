@@ -103,28 +103,6 @@ export default {
     .staticDrawMenuBtns {
         padding: 5px;
         overflow: hidden;
-        .staticDrawMenuSpot {
-            .staticDrawMenuSpotTitle {
-                margin-bottom: 5px;
-                font-size: 14px;
-            }
-            .staticDrawMenuBtn {
-                cursor: pointer;
-                display: inline-block;
-                padding: 4px 0;
-                font-size: 25px;
-                width: 12%;
-                text-align: center;
-                border-radius: 5px;
-                .icon {
-                    border-radius: 5px;
-                    border: 1px solid #ccc;
-                }
-            }
-            .animationOperate {
-                animation: editAnimation 0.3s linear infinite;
-            }
-        }
     }
 }
 </style>

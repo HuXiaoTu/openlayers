@@ -1,4 +1,4 @@
-import { Fill, Style } from "ol/style";
+import { Style } from "ol/style";
 import Stroke from "ol/style/Stroke";
 import { drawTool } from "../../core/drawTool";
 

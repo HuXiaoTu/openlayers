@@ -1,6 +1,6 @@
 <template>
     <!-- 符号绘制 -->
-    <div class="staticDrawMenuSpot">
+    <div class="staticDrawMenuSpot" ref="staticDrawMenuDom">
         <!-- 顶部 显示 操作栏 -->
         <div class="staticDrawMenuTop">
             <!-- 提示信息 title 区域 -->
@@ -73,13 +73,14 @@ export default {
         let drawToolHandel = props.drawToolHandel;
         // 符号列表
         let symbolList = props.symbolList;
+        // 组件顶级dom
+        let staticDrawMenuDom = ref(null);
 
         // 编辑 动画
         let animationOperate = ref(0);
         animationOperate.value = false;
         // 是否显示 提示信息
-        let isTooltip = ref(0);
-        isTooltip.value = false;
+        let isTooltip = ref(false);
 
         // 设置按钮触发
         let settingsBtn = () => {
@@ -91,18 +92,20 @@ export default {
             if (animationOperate.value) dragEvent();
             else {
                 // 清空绑定事件
-                let node = document.querySelector(".staticDrawMenuBtns");
+                let node = staticDrawMenuDom.value;
                 node.onmousedown = null;
                 node.ondragend = null;
                 node.ondragstart = null;
                 node.ondragover = null;
+
+                isTooltip.value = false;
             }
         }
 
         // 处理 拖拽 事件绑定
         let dragEvent = () => {
 
-            let node = document.querySelector(".staticDrawMenuBtns");
+            let node = staticDrawMenuDom.value;
 
             // 防止提示信息 影响拖拽位置
             node.onmousedown = () => isTooltip.value = true;
@@ -209,7 +212,7 @@ export default {
             if (animationOperate.value) return
 
             // 处理当前选中效果
-            let box = document.body.querySelector('.staticDrawMenuBtns');
+            let box = staticDrawMenuDom.value;
             let dom = e.currentTarget;
             let select = box.querySelector('.activeBtn');
             if (select && dom != select) select.classList.remove('activeBtn');
@@ -286,6 +289,8 @@ export default {
 
             showListState,
             changeListState,
+
+            staticDrawMenuDom,
         }
     }
 }
