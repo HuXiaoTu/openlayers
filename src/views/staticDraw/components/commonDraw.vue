@@ -37,6 +37,7 @@
                     :draggable="animationOperate"
                     @click="clickDraw($event,item)"
                     @dblclick.stop
+                    @contextmenu.prevent="contextmenuCustom"
                 >
                     <svg class="icon" aria-hidden="true">
                         <use :xlink:href="item.iconClass" />
@@ -50,6 +51,7 @@
 <script>
 import { ref } from '@vue/reactivity';
 import { ElMessage } from 'element-plus';
+import { createContextMenu } from '../../../commonTool/commonUtil/domHandle';
 
 export default {
     emits: ['drawBtnClick'],
@@ -278,6 +280,27 @@ export default {
             })
         }
 
+        // 自定以 右键菜单
+        const contextmenuCustom = (e) => {
+            let { clientY, clientX } = e;
+            let styleCustom = {
+                left: clientX + 'px',
+                top: clientY + 'px',
+            }
+            let menuList = [
+                {
+                    icon: {
+                        name: '',
+                        color: 'black',
+                    },
+                    name: '菜单1',
+                    callBack: () => { }
+                }
+            ]
+
+            createContextMenu(styleCustom, menuList);
+        }
+
 
         return {
             // 符号列表
@@ -292,6 +315,8 @@ export default {
             changeListState,
 
             staticDrawMenuDom,
+            // 自定义 右键菜单
+            contextmenuCustom,
         }
     }
 }
