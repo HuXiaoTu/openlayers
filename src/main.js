@@ -4,7 +4,8 @@ import App from './App.vue'
 // mockJS 数据拦截
 import './axios/mockJS/mock.js';
 
-import router from './route/route'
+import router from './route/route.js'
+import store from './store/index.js';
 import ElementPlus from 'element-plus';
 import * as icons from '@element-plus/icons-vue';
 import 'element-plus/dist/index.css';
@@ -13,6 +14,8 @@ import 'element-plus/dist/index.css';
 const app = createApp(App)
 // 注册路由
 app.use(router);
+// 注册vueX
+app.use(store);
 // 注册ElementUI
 app.use(ElementPlus, { size: 'small', zIndex: 3000 });
 // 注册element 图标
