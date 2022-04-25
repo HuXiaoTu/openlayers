@@ -43,7 +43,6 @@ export default {
     padding: 5px;
     .btnCss {
         margin-bottom: 5px;
-        font-family: "myIcon";
     }
 }
 </style>

@@ -13,9 +13,10 @@
             <!-- 控制 按钮 区域 -->
             <transition name="el-zoom-in-top">
                 <div v-show="showListState" class="staticDrawMenuSpotTitleBtn">
-                    <el-icon class="settingBtn">
-                        <tools @click="settingsBtn" />
-                    </el-icon>
+                    <div
+                        :class="{'settingBtn':animationOperate,'fontFamily':true,}"
+                        @click="settingsBtn"
+                    ></div>
                 </div>
             </transition>
         </div>
@@ -299,8 +300,8 @@ export default {
 <style lang="scss" scoped>
 .staticDrawMenuSpot {
     .staticDrawMenuTop {
+        margin-bottom: 5px;
         .staticDrawMenuSpotTitle {
-            margin-bottom: 5px;
             font-size: 14px;
             cursor: pointer;
             user-select: none;
@@ -318,6 +319,14 @@ export default {
             }
             .iconRotate {
                 transform: rotate(0deg);
+            }
+        }
+        .staticDrawMenuSpotTitleBtn {
+            .settingBtn {
+                color: #000;
+            }
+            .fontFamily {
+                cursor: pointer;
             }
         }
     }

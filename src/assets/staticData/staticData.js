@@ -29,19 +29,19 @@
 export const lineList = [
     {
         iconClass: '#iconpolyline-fill',
-        fontFamily: '',
+        fontFamily: '',
         title: "线段",
         type: 'LineString',
     },
     {
         iconClass: '#iconduobianxingxuanze',
-        fontFamily: '',
+        fontFamily: '',
         title: "多边形",
         type: 'Polygon',
     },
     {
         iconClass: '#iconyuanxing',
-        fontFamily: '',
+        fontFamily: '',
         title: "圆形",
         type: 'Circle',
     },

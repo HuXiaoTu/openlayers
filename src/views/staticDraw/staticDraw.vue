@@ -95,9 +95,6 @@ export default {
         .staticDrawMenuSpotTitleBtn {
             width: 50%;
             text-align: right;
-            .settingBtn {
-                cursor: pointer;
-            }
         }
     }
     .staticDrawMenuBtns {

@@ -1,15 +1,21 @@
 // 引入自定义 字体文件
-@font-face
-{
+@font-face {
     font-family: 'myIcon';
-    src: url('../../../public/icon/iconfont.ttf')format('truetype'),
+    src: url('../../../public/icon/iconfont.ttf') format('truetype'),
 }
-.iconfot{
+
+.iconfot {
     font-family: "myIcon";
     font-size: 14px;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.fontFamily {
+    font-family: myIcon;
+    font-size: 20px;
+    user-select: none;
 }
 
 // 初始化
