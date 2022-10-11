@@ -1,16 +1,8 @@
-import { createStore } from 'vuex';
+/**
+ * 全局状态管理器
+ */
+import { createPinia } from 'pinia';
 
-const store = createStore({
-    state() {
-        return {
-        }
-    },
-    getters: {
-    },
-    mutations: {
-    },
-    actions: {
-    }
-});
+const store = createPinia();
 
 export default store;
