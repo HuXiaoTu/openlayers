@@ -1,18 +1,31 @@
 <template>
     <!-- 符号绘制 -->
-    <div class="staticDrawMenuSpot" ref="staticDrawMenuDom">
+    <div
+        class="staticDrawMenuSpot"
+        ref="staticDrawMenuDom"
+    >
         <!-- 顶部 显示 操作栏 -->
         <div class="staticDrawMenuTop">
             <!-- 提示信息 title 区域 -->
-            <span class="staticDrawMenuSpotTitle" @click="changeListState">
+            <span
+                class="staticDrawMenuSpotTitle"
+                @click="changeListState"
+            >
                 <span>{{title}}</span>
-                <svg class="icon" :class="{'iconRotate':!showListState}" aria-hidden="true">
+                <svg
+                    class="icon"
+                    :class="{'iconRotate':!showListState}"
+                    aria-hidden="true"
+                >
                     <use xlink:href="#iconyoujiantou1" />
                 </svg>
             </span>
             <!-- 控制 按钮 区域 -->
             <transition name="el-zoom-in-top">
-                <div v-show="showListState" class="staticDrawMenuSpotTitleBtn">
+                <div
+                    v-show="showListState"
+                    class="staticDrawMenuSpotTitleBtn"
+                >
                     <div
                         :class="{'settingBtn':animationOperate,'fontFamily':true,}"
                         @click="settingsBtn"
@@ -21,12 +34,13 @@
             </transition>
         </div>
         <!-- 符号列表 -->
-        <div class="staticDrawMenuList" :class="{'animationList':!showListState}">
+        <div
+            class="staticDrawMenuList"
+            :class="{'animationList':!showListState}"
+        >
             <!-- 提示信息 -->
-            <el-tooltip
-                placement="top"
+            <in-tooltip
                 v-for="(item, index) in symbolList"
-                :enterable="false"
                 :key="index"
                 :content="item.title"
                 :disabled="isTooltip"
@@ -39,11 +53,14 @@
                     @dblclick.stop
                     @contextmenu.prevent="contextmenuCustom"
                 >
-                    <svg class="icon" aria-hidden="true">
+                    <svg
+                        class="icon"
+                        aria-hidden="true"
+                    >
                         <use :xlink:href="item.iconClass" />
                     </svg>
                 </span>
-            </el-tooltip>
+            </in-tooltip>
         </div>
     </div>
 </template>
@@ -225,46 +242,7 @@ export default {
             // 取消绘制状态
             if (!flg) return drawToolHandel.clearInteraction();
 
-            //创建creator
-            // let svg1 = document.querySelector('#icontianqi-1');
-            // let xx = "http://www.w3.org/2000/svg";
-            // let x = document.createElementNS(xx, 'svg');
-            // x.setAttribute('aria-hidden', 'true');
-            // for (let i = 0; i < svg1.children.length; i++) {
-            //     const element = svg1.children[i];
-            //     x.appendChild(element);
-            // }
-            // x.appendChild(svg1);
-
-            // let svg = dom.firstChild;
-            // console.info('>>>> ws >>>⚡⚡ row', fontFamily)
-
-            // console.dir(svg);
-            // console.info('>>>> ws >>>⚡⚡ svg.href.baseVal', svg.href)
-            // console.info('>>>> ws >>>⚡⚡ svg.href.baseVal', svg.baseVal)
-
-
             emit('drawBtnClick', { fontFamily, type });
-            // 开始绘制
-            // drawToolHandel.setImg(fontFamily).initDraw({ type: 'Point' });
-
-            // console.info('>>>> ws >>>⚡⚡ svg.ownerDocument', )
-
-            // let canvas = document.createElement('canvas');
-            // canvas.style.width = '100vw';
-            // canvas.style.height = '100vh';
-            // canvas.style.position = 'fixed';
-            // canvas.style.left = '0';
-            // canvas.style.top = '0';
-            // var ctx = canvas.getContext("2d");
-            // ctx.drawImage(x, 10, 10);
-
-            // x.style.position = 'fixed';
-            // x.style.left = '1000px';
-            // x.style.top = '50px';
-            // x.style.background = 'red';
-
-            // document.body.appendChild(x)
 
         }
 
@@ -274,10 +252,7 @@ export default {
         // 点击改变状态
         let changeListState = () => {
             if (symbolList.length !== 0) showListState.value = !showListState.value;
-            else ElMessage({
-                message: '未查询到数据列表！',
-                type: 'warning',
-            })
+            else ElMessage({ message: '未查询到数据列表！', type: 'warning', });
         }
 
         // 自定以 右键菜单
@@ -289,15 +264,12 @@ export default {
             }
             let menuList = [
                 {
-                    icon: {
-                        name: '',
-                        color: 'black',
-                    },
+                    icon: { name: '', color: 'black', },
                     name: '菜单1',
                     callBack: () => { }
                 }
             ]
-
+            // 生成 自定义右键菜单
             createContextMenu(styleCustom, menuList);
         }
 
@@ -326,13 +298,17 @@ export default {
 .staticDrawMenuSpot {
     .staticDrawMenuTop {
         margin-bottom: 5px;
+        display: flex;
+
         .staticDrawMenuSpotTitle {
             font-size: 14px;
             cursor: pointer;
             user-select: none;
-            > span {
+
+            >span {
                 vertical-align: middle;
             }
+
             .icon {
                 width: 15px;
                 height: 15px;
@@ -342,25 +318,36 @@ export default {
                 transform: rotate(90deg);
                 transition: transform 0.3s linear;
             }
+
             .iconRotate {
                 transform: rotate(0deg);
             }
         }
+
         .staticDrawMenuSpotTitleBtn {
+            flex: 1;
+            text-align: right;
+
             .settingBtn {
                 color: #000;
             }
+
             .fontFamily {
+                display: inline-block;
                 cursor: pointer;
+                width: 20px;
+                height: 20px;
             }
         }
     }
+
     .staticDrawMenuList {
-        padding: 5px;
+        margin: 5px;
         max-height: 250px;
         overflow: hidden;
         transition: max-height 0.3s linear;
         box-sizing: border-box;
+
         .staticDrawMenuBtn {
             cursor: pointer;
             display: inline-block;
@@ -369,18 +356,21 @@ export default {
             width: 12%;
             text-align: center;
             border-radius: 5px;
+
             .icon {
                 border-radius: 5px;
                 border: 1px solid #ccc;
             }
         }
+
         .animationOperate {
             animation: editAnimation 0.3s linear infinite;
         }
     }
+
     .animationList {
         max-height: 0;
-        padding-bottom: 0;
+        // padding-bottom: 0;
     }
 }
 </style>
