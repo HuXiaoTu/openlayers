@@ -58,7 +58,7 @@ export default {
             let complexGraphics = ['LineString', 'Polygon', 'Circle'];
             // 开始绘制
             if (type === 'Point') {
-                point.setImg(fontFamily).initDraw({ type });
+                point.addAnimation().setImg(fontFamily).initDraw({ type });
             } else if (complexGraphics.includes(type)) {
                 line.initDraw({ type });
             }
@@ -81,22 +81,7 @@ export default {
     background-color: rgba(54, 54, 54, 0.8);
     color: #ffffff;
     padding: 5px;
-    .staticDrawMenuTop {
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        .staticDrawMenuSpotTitle {
-            width: 50%;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        .staticDrawMenuSpotTitleBtn {
-            width: 50%;
-            text-align: right;
-        }
-    }
+
     .staticDrawMenuBtns {
         padding: 5px;
         overflow: hidden;

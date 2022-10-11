@@ -32,7 +32,12 @@ export function getFontDocumentWidth(text, fontSize = "12", fontFamily = "Lucida
     return width;
 }
 
-
+/**
+ * 创建一个自定义右键菜单
+ * @param {*} styleCustom 样式
+ * @param {*} menuList 自定义列表选项
+ * @returns 
+ */
 export function createContextMenu(styleCustom, menuList = []) {
     let { left, top, backgroundColor, color, fontSize } = styleCustom;
     if (left === undefined || top === undefined) return new Error('自定义弹框样式:left、right 为必填项！');

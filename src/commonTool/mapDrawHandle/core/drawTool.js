@@ -15,13 +15,20 @@ export class drawTool {
         this.map = getCurrentMap();
         this.layer = VectorLayerDraw;
         this.imgClass = null;
-        if (this.layer);
+        this.isAnimation = true;
     }
 
     // 设置layer
     setLayer(layer = VectorLayerDraw) {
         this.layer = layer;
         return this;
+    }
+    // 追加绘制动画效果
+    addAnimation(layer = this.layer) {
+        // let source = layer.getSource();
+        // source.on('addfeature', (e) => this.flash(e.feature));
+        // this.isAnimation = true;
+        return this
     }
     // 设置绘制图形
     setImg(imgClass) {
@@ -48,6 +55,8 @@ export class drawTool {
         this.draw.on('drawend', (event) => {
             let feature = event.feature;
             feature.setStyle(this.initStyle(feature))
+
+            this.flash(feature);
         })
         this.map.addInteraction(this.draw);
     }
