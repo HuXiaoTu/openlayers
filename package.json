@@ -2,7 +2,7 @@
   "name": "openlayers",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host --open",
     "build": "vite build",
     "serve": "vite preview"
   },
@@ -12,9 +12,9 @@
     "element-plus": "2.1.10",
     "file-saver": "^2.0.5",
     "ol": "^5.3.3",
+    "pinia": "^2.0.23",
     "vue": "^3.2.0",
-    "vue-router": "^4.0.14",
-    "vuex": "^4.0.0"
+    "vue-router": "^4.0.14"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.2.1",
