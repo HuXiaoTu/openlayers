@@ -1,5 +1,5 @@
 // 按钮 样式定义
-.btnClick{
+.btnClick {
     border-radius: 5px;
     background-color: rgba(26, 70, 87, 0.774);
     height: 25px;
@@ -7,26 +7,42 @@
     padding-left: 5px;
     font-size: 12px;
     cursor: pointer;
-    &:hover{
+
+    &:hover {
         color: rgb(230, 224, 224);
     }
 }
+
 // 选中按钮样式
-.activeBtn{
+.activeBtn {
     box-shadow: 0px 0px 2px 5px skyblue;
 }
+
 // 编辑 动画
 @keyframes editAnimation {
-    25%{
+    25% {
         transform: rotate(10deg);
     }
-    50%{
+
+    50% {
         transform: rotate(0deg);
     }
-    75%{
+
+    75% {
         transform: rotate(-10deg);
     }
-    100%{
+
+    100% {
         transform: rotate(0deg);
     }
+}
+
+/* 灰色模式 */
+.gray-mode {
+    filter: grayscale(100%);
+}
+
+/* 色弱模式 */
+.weak-mode {
+    filter: invert(80%);
 }
