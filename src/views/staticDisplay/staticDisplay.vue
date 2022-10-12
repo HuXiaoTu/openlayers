@@ -1,10 +1,14 @@
 <template>
     <!-- 静态显示页面 -->
-    <div class="staticDisplayMenu">
+    <div
+        class="staticDisplayMenu"
+        :style="{backgroundColor:useSetting.themeConfig.backgroundColor,color:useSetting.themeConfig.color}"
+    >
         <!-- 绘制按钮列表 -->
         <div
             class="btnClick btnCss"
-            v-for="(item, index) in btnList"
+            :style="{backgroundColor:useSetting.themeConfig.btnBgColor,color:useSetting.themeConfig.color}"
+            v-for="(item, index) in staticDisplayList"
             :key="index"
             size="mini"
             type="primary"
@@ -12,26 +16,19 @@
         >{{ item.name }}</div>
     </div>
 </template>
-<script>
+<script setup>
 import { staticDisplayList } from '../../assets/staticData/staticData.js';
 import { drawFeatures } from './controlCenter/controlCenter.js';
 import { getData } from '../../axios/axios/axiosList.js';
-export default {
-    data() {
-        return {
-            // 按钮列表 
-            btnList: staticDisplayList
-        }
-    },
-    methods: {
-        btnClick({ name, type }) {
-            // 根据类型 获取数据
-            getData('/windTemperature', { type }).then(data => {
-                console.info('>>>> ws >>>⚡⚡ data', data, type)
-                drawFeatures({ type, data })
-            })
-        }
-    }
+import { useSettingStore } from '../../store/setting';
+
+let useSetting = useSettingStore();
+
+const btnClick = ({ name, type }) => {
+    // 根据类型 获取数据
+    getData('/windTemperature', { type }).then(data => {
+        drawFeatures({ type, data })
+    })
 }
 </script>
 <style lang="scss" scoped>
@@ -41,6 +38,7 @@ export default {
     background-color: rgba(54, 54, 54, 0.8);
     color: #ffffff;
     padding: 5px;
+
     .btnCss {
         margin-bottom: 5px;
     }
