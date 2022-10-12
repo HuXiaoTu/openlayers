@@ -30,12 +30,12 @@ defineProps({
     },
     // Tooltip 组件是否禁用
     disabled: {
-        type: String,
+        type: Boolean,
         default: false
     },
     // 鼠标是否可进入到 tooltip 中
     enterable: {
-        type: String,
+        type: Boolean,
         default: false
     }
 })
