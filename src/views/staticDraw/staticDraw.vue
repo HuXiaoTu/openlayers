@@ -28,6 +28,7 @@ import { lineStringDraw } from '../../commonTool/mapDrawHandle/drawTool/drawList
 import { useSettingStore } from '../../store/setting';
 
 let useSetting = useSettingStore();
+
 // 绘制 基础类
 let drawToolHandel = new drawTool();
 // 点类 绘制
@@ -59,13 +60,13 @@ let drawBtnClick = ({ fontFamily, type }) => {
     let complexGraphics = ['LineString', 'Polygon', 'Circle'];
     // 开始绘制
     if (type === 'Point') {
-        point.addAnimation().setImg(fontFamily).initDraw({ type });
+        point.setImg(fontFamily).initDraw({ type });
     } else if (complexGraphics.includes(type)) {
         line.initDraw({ type });
     }
 }
 </script>
-<style lang="scss" >
+<style lang="scss">
 .staticDrawMenu {
     width: 300px;
     height: 100%;

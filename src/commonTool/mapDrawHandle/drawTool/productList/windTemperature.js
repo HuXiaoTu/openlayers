@@ -150,6 +150,7 @@ export default class windTemperature extends GridValue {
             });
             arr.push(addLine)
         }
+
         // 当没有 风速 风向的时候 绘制个 圆
         if (fifty == 0 && ten == 0 && five == 0) {
             let empty = new Style({
@@ -158,10 +159,8 @@ export default class windTemperature extends GridValue {
                         color: 'black',
                         width: 1,
                     }),
-                    radius: 1,
-                    fill: new Stroke({
-                        color: 'black',
-                    })
+                    radius: 2,
+                    fill: new Fill({ color: 'black' })
                 }),
             })
             arr.push(empty);

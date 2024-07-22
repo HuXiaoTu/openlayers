@@ -12,7 +12,7 @@ import { fromLonLat } from 'ol/proj';
 
 import MousePosition from "ol/control/MousePosition.js";
 import { DragRotateAndZoom, defaults as defaultInteractions, } from 'ol/interaction';
-import { FullScreen, ScaleLine, OverviewMap, defaults as defaultControls } from 'ol/control';
+import { FullScreen, ScaleLine, defaults as defaultControls, OverviewMap } from 'ol/control';
 
 import { mapConfig } from '../../commonConfig/config.js';
 
@@ -96,7 +96,7 @@ const mousePositionControl = ({ target }) => {
 const overviewMapControl = () => {
     return new OverviewMap({
         className: 'ol-overviewmap ol-custom-overviewmap',
-        layers: [XYZlayer],
+        layers: [OSMlayer],
         collapseLabel: '\u00BB',
         label: '\u00AB',
         collapsed: false,
@@ -145,15 +145,17 @@ export const initialMap = (target = '') => {
         // extent: transformExtent([-30, -70, 180, 180], 'EPSG:4326', 'EPSG:3857'),    // 设置投影范围
     })
 
-    return map = new Map({
+    map = new Map({
         layers: [dataOverlayGroup, dataOverlayDisplayGroup, dataOverlayDrawGroup],
         view,
-        target: 'mapBox',
+        target,
         // 插件注册
         controls: defaultControls().extend([overviewMapControl(), mousePositionControl({ target: targetDomLonLat }), scaleLineControl(), fullScreenControl({ target: targetDom })]),
         // 按住Shift+Drag以围绕其中心旋转和缩放地图
         interactions: defaultInteractions().extend([dragRotateAndZoomControl()]),
     });
+    console.info('>>>> ws >>> 🐌💬 地图加载完成了',)
+    return map;
 }
 
 

@@ -26,10 +26,10 @@
     </div>
 </template>
 <script setup>
+import MapView from './mapView/mapView.vue';
 import TopMenu from './components/topMenu/top.vue';
 import LongitudinalBar from './components/toolBar/longitudinalBar.vue';
 import GlobalSetting from './components/settings/globalSetting/index.vue';
-import MapView from './mapView/mapView.vue';
 import { watchDomChange } from '../commonTool/commonUtil/domHandle.js';
 
 import { onMounted } from 'vue';
@@ -39,6 +39,9 @@ onMounted(() => {
     const longitudinal = document.querySelector('.longitudinal');
     // 选择需要观察变动的节点
     const targetNode = document.querySelector('.mapMenu');
+    // 先进行一次设置
+    longitudinal.style.left = targetNode.clientWidth + 'px';
+
     // 当观察到变动时执行的回调函数
     const callback = () => {
         longitudinal.style.left = targetNode.clientWidth + 'px';

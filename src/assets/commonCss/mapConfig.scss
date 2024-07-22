@@ -1,15 +1,18 @@
 // 地图 组件 样式重置
 #mapBox {
+
     // 经纬度标值 显示样式
     #mouse-position {
         position: absolute;
         right: 5px;
         bottom: 10px;
         z-index: 10;
+
         .ol-mouse-position {
             position: static !important;
         }
     }
+
     // 小窗 预览样式 
     .ol-custom-overviewmap,
     .ol-custom-overviewmap.ol-uncollapsible {
@@ -17,16 +20,20 @@
         left: auto;
         right: 0;
         top: 0;
+
         .ol-overviewmap-map {
             border: none;
             width: 300px;
         }
+
         .ol-overviewmap-box {
             border: 2px solid red;
         }
     }
+
     .ol-custom-overviewmap:not(.ol-collapsed) {
         border: 1px solid black;
+
         button {
             bottom: auto;
             left: auto;
@@ -34,24 +41,27 @@
             top: 1px;
         }
     }
+
     // 按住Shift+Drag以围绕其中心旋转和缩放地图 图标样式
-    .ol-rotate{
+    .ol-rotate {
         top: 165px;
         right: 1px;
     }
+
     // 放大缩小
-    .ol-zoom{
+    .ol-zoom {
         display: none;
     }
+
     // 说明信息
-    .ol-attribution{
+    .ol-attribution {
         display: none;
     }
 }
 
 // 纵轴工具栏 map动态追加到里面的 按钮
-.longitudinalBar{
-    .customBtn{
+.longitudinalBar {
+    .customBtn {
         display: inline-block;
         text-align: center;
         cursor: pointer;
@@ -59,23 +69,27 @@
         background-color: rgba(0, 60, 136, 0.5);
         color: #ffffff;
         border-radius: 3px;
-        position: relative!important;
+        position: relative !important;
         right: 0;
         top: 0;
         width: 29px;
         height: 26px;
+
         &:hover {
             background-color: rgba(0, 60, 136, 0.7);
         }
-        .customBtn-false{
+
+        .customBtn-false {
             width: 100%;
-            height: 100%!important;
+            height: 100% !important;
             margin: 0;
             font-size: 22px;
             height: auto;
             line-height: normal;
             background-color: transparent;
             border: none;
+            cursor: pointer;
+            color: #ffffff;
         }
     }
 }

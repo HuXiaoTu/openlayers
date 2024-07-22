@@ -2,7 +2,10 @@
     <!-- 内容区域  -->
     <div class="mapShowIndexCont">
         <!-- 地图展示 -->
-        <div id="mapBox" class="map"></div>
+        <div
+            id="mapBox"
+            class="map"
+        ></div>
     </div>
 </template>
 <script>
@@ -18,6 +21,7 @@ export default {
     width: 100%;
     height: 100%;
     overflow: hidden;
+
     #mapBox {
         width: 100%;
         height: 100%;
