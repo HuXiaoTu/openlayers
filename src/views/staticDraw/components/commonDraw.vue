@@ -29,7 +29,7 @@
                     <div
                         :class="{'settingBtn':animationOperate,'fontFamily':true,}"
                         @click="settingsBtn"
-                    ></div>
+                    >&#xe64e;</div>
                 </div>
             </transition>
         </div>
@@ -68,7 +68,7 @@
 <script setup>
 import { onBeforeUnmount, ref } from 'vue';
 import { ElMessage } from 'element-plus';
-import { createContextMenu } from '../../../commonTool/commonUtil/domHandle';
+import { createContextMenu } from '@/commonTool/commonUtil/domHandle';
 import { switchInteraction } from '@/commonTool/mapDrawHandle/core/drawTool.js';
 
 let props = defineProps({
@@ -260,7 +260,7 @@ const contextmenuCustom = (e) => {
     }
     let menuList = [
         {
-            icon: { name: '', color: 'black', },
+            icon: { name: '&#xe67a;', color: 'black', },
             name: '菜单1',
             callBack: () => { }
         }

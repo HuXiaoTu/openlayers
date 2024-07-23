@@ -83,7 +83,8 @@ export function createContextMenu(styleCustom, menuList = []) {
         font-size:${icon.fontSize || '20px'};
         color:${color || 'black'};
         font-family:myIcon;`
-        contRowIcon.innerText = icon.name;
+        contRowIcon.setAttribute('class', 'iconFont');
+        contRowIcon.innerHTML = icon.name;
         contRow.appendChild(contRowIcon);
 
         // 某行 - 文字
