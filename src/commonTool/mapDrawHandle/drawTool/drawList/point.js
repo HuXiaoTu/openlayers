@@ -7,6 +7,13 @@ export class pointDraw extends drawTool {
     constructor() {
         super()
         this.duration = 3000;
+        // 绘制图形
+        this.imgClass = null;
+    }
+    // 设置绘制图形
+    setImg(imgClass) {
+        this.imgClass = imgClass;
+        return this;
     }
     initStyle() {
         return [

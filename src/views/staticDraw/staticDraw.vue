@@ -12,25 +12,21 @@
                 :key="index"
                 :title="item.title"
                 :symbolList="item.symbolList"
-                :drawToolHandel="drawToolHandel"
                 @drawBtnClick="drawBtnClick"
             ></DrawComponents>
         </div>
     </div>
 </template>
 <script setup>
-import { onBeforeUnmount, reactive } from 'vue';
+import { reactive } from 'vue';
 import DrawComponents from './components/commonDraw.vue';
 import { lineList, spotList } from '../../assets/staticData/staticData.js';
-import { drawTool } from '../../commonTool/mapDrawHandle/core/drawTool.js';
-import { pointDraw } from '../../commonTool/mapDrawHandle/drawTool/drawList/point.js';
-import { lineStringDraw } from '../../commonTool/mapDrawHandle/drawTool/drawList/lineString.js';
 import { useSettingStore } from '../../store/setting';
+import { pointDraw } from '@/commonTool/mapDrawHandle/drawTool/drawList/point.js';
+import { lineStringDraw } from '@/commonTool/mapDrawHandle/drawTool/drawList/lineString.js';
 
 let useSetting = useSettingStore();
 
-// 绘制 基础类
-let drawToolHandel = new drawTool();
 // 点类 绘制
 let point = new pointDraw();
 // 点类 绘制
@@ -49,11 +45,7 @@ let dataList = reactive([
         symbolList: reactive(lineList)
     },
 ]);
-// 卸载前
-onBeforeUnmount(() => {
-    // 取消绘制状态
-    drawToolHandel.clearInteraction();
-})
+
 
 // 选中按钮触发
 let drawBtnClick = ({ fontFamily, type }) => {
