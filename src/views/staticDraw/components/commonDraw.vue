@@ -224,7 +224,7 @@ let dragEvent = () => {
     }
 }
 // 绘制按钮触发
-let clickDraw = (e, { fontFamily, type }) => {
+let clickDraw = (e, { fontUnicode, type, iconClass }) => {
     // 如果在编辑状态 取消绘制状态
     if (animationOperate.value) return
 
@@ -241,7 +241,7 @@ let clickDraw = (e, { fontFamily, type }) => {
 
     // 准备开启绘制功能 关闭地图交互&&关闭上次交互
     switchInteraction({ active: false });
-    emit('drawBtnClick', { fontFamily, type });
+    emit('drawBtnClick', { fontUnicode, type, iconClass });
 }
 // 当前展开状态 默认展开
 let showListState = ref(0);

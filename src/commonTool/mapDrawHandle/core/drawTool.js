@@ -3,7 +3,7 @@ import DragPan from 'ol/interaction/DragPan.js';
 
 import { Vector as VectorSource } from 'ol/source';
 import { Vector as VectorLayer } from 'ol/layer';
-import { Circle as CircleStyle, Fill, Stroke, Style, Icon, Text, } from 'ol/style';
+import { Circle as CircleStyle, Stroke, Style } from 'ol/style';
 import { Feature } from 'ol';
 import Point from 'ol/geom/Point';
 import { getVectorContext } from 'ol/render.js';

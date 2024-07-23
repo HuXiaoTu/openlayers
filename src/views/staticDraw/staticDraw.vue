@@ -48,11 +48,11 @@ let dataList = reactive([
 
 
 // 选中按钮触发
-let drawBtnClick = ({ fontFamily, type }) => {
+let drawBtnClick = ({ fontUnicode, type, iconClass }) => {
     let complexGraphics = ['LineString', 'Polygon', 'Circle'];
     // 开始绘制
     if (type === 'Point') {
-        point.setImg(fontFamily).initDraw({ type });
+        point.setUnicodeIcon(fontUnicode).initDraw({ type });
     } else if (complexGraphics.includes(type)) {
         line.initDraw({ type });
     }
