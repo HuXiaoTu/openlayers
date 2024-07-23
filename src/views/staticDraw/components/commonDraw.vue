@@ -324,7 +324,7 @@ onBeforeUnmount(() => {
     }
 
     .staticDrawMenuList {
-        margin: 5px;
+        padding: 5px;
         max-height: 250px;
         overflow: hidden;
         transition: max-height 0.3s linear;
