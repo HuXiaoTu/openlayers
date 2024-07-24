@@ -1,6 +1,5 @@
 import Draw from 'ol/interaction/Draw';
 import DragPan from 'ol/interaction/DragPan.js';
-
 import { Vector as VectorSource } from 'ol/source';
 import { Vector as VectorLayer } from 'ol/layer';
 import { Circle as CircleStyle, Stroke, Style } from 'ol/style';
@@ -10,6 +9,12 @@ import { getVectorContext } from 'ol/render.js';
 import { VectorLayerDraw, getCurrentMap } from "./mapTool.js";
 import { easeOut } from 'ol/easing';
 import { unByKey } from 'ol/Observable';
+
+/** feature中自定义属性集合说明
+ * 设置方法示例：feature.set('f_function', { isMove: true }, false);
+ * @param {f_function:{}}   功能性数据集合 例：是否可移动、是否可编辑等 
+ * @param {f_styleData:{}}  样式性数据集合 例：颜色、各类表现形式等 
+ */
 
 
 // 初始化 画笔
@@ -36,13 +41,13 @@ export class drawTool {
      * @param {*}  callback     绘制完成后的回调
      */
     initDraw({ type = 'Point', isAnimation = true, callback = null }) {
-        // 先获取当前显示地图备用
-        this.map = getCurrentMap();
         // 创建 自定义交互
         this.addInteraction({ type, isAnimation, callback });
     }
     // 创建 自定义交互
     addInteraction({ type, isAnimation, callback = null }) {
+        // 先获取当前显示地图备用
+        this.map = getCurrentMap();
         this.draw = new Draw({
             type,
             source: this.layer.getSource(),

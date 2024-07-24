@@ -6,7 +6,6 @@ import LayerGroup from 'ol/layer/Group';
 import VectorLayer from 'ol/layer/Vector';
 import { Vector as VectorSource } from "ol/source";
 
-
 import { format } from "ol/coordinate";
 import { fromLonLat } from 'ol/proj';
 
@@ -15,6 +14,7 @@ import { DragRotateAndZoom, defaults as defaultInteractions, } from 'ol/interact
 import { FullScreen, ScaleLine, defaults as defaultControls, OverviewMap } from 'ol/control';
 
 import { mapConfig } from '../../commonConfig/config.js';
+import { InteractionsMethods, MapMethods } from './map_methods.js';
 
 
 let map = null;
@@ -75,7 +75,15 @@ export const dataOverlayDrawGroup = new LayerGroup({
 // 地图插件---------------------------------------------------------------
 // 按住Shift+Drag以围绕其中心旋转和缩放地图
 const dragRotateAndZoomControl = () => {
-    return new DragRotateAndZoom()
+    return new DragRotateAndZoom();
+}
+// 自定义 各符号的 点击、拖拽、移动等 交互事件
+const interactions_methods = () => {
+    return new InteractionsMethods();
+}
+// 自定义 各符号的 点击、拖拽、移动等 交互事件
+const map_methods = (map) => {
+    return new MapMethods(map);
 }
 //鼠标经过显示经纬度
 const mousePositionControl = ({ target }) => {
@@ -151,10 +159,13 @@ export const initialMap = (target = '') => {
         target,
         // 插件注册
         controls: defaultControls().extend([overviewMapControl(), mousePositionControl({ target: targetDomLonLat }), scaleLineControl(), fullScreenControl({ target: targetDom })]),
-        // 按住Shift+Drag以围绕其中心旋转和缩放地图
-        interactions: defaultInteractions().extend([dragRotateAndZoomControl()]),
+        // 交互事件注册
+        interactions: defaultInteractions().extend([dragRotateAndZoomControl(), interactions_methods()]),
     });
-    console.info('>>>> ws >>> 🐌💬 地图加载完成了',)
+    // map相关事件注册
+    map_methods(map);
+
+    console.info('>>>> ws >>> 🐌💬 地图加载完成了',);
     return map;
 }
 

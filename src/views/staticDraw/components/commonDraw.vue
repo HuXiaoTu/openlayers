@@ -229,7 +229,7 @@ let clickDraw = (e, { fontUnicode, type, iconClass }) => {
     if (animationOperate.value) return
 
     // 处理当前选中效果
-    let box = staticDrawMenuDom.value;
+    let box = document.querySelector('.staticDrawMenuBtns');
     let dom = e.currentTarget;
     let select = box.querySelector('.activeBtn');
     if (select && dom != select) select.classList.remove('activeBtn');

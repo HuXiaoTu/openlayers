@@ -15,6 +15,21 @@ export class pointDraw extends drawTool {
         this.UnicodeIcon = String.fromCharCode(fontUnicode);
         return this;
     }
+    /**
+     * 初始化绘制画笔
+     * @param {*}  type         绘制类型：点、线、圆等
+     * @param {*}  isAnimation  是否开启绘制完成的动画效果
+     * @param {*}  callback     绘制完成后的回调
+     */
+    initDraw({ type = 'Point', isAnimation = true }) {
+        // 创建 自定义交互
+        this.addInteraction({
+            type, isAnimation, callback: feature => {
+                // 将点类符号 设置为可移动类型
+                feature.set('f_function', { isMove: true }, false);
+            }
+        });
+    }
     initStyle() {
         return [
             new Style({
