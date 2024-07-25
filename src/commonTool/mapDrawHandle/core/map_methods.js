@@ -97,7 +97,7 @@ export class MapMethods {
                         console.info('>>>> ws >>> 🐌💬 点击了删除按钮',)
                         gbMap.delFeatureToMap(this.map, feature);
                     }
-                }
+                },
             ]
             // 生成 自定义右键菜单
             createContextMenu(styleCustom, menuList);

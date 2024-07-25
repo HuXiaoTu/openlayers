@@ -47,11 +47,13 @@ export function createContextMenu(styleCustom, menuList = []) {
 
     // 外壳
     let dom = document.createElement('div');
-    dom.setAttribute('class', 'customContextMenu');
+    dom.setAttribute('class', 'customContextMenu scroll');
     const css = `
-    min-width:200px;
+    min-width:180px;
     min-height:200px;
+    max-height:300px;
     padding:5px;
+    overflow:auto;
     position:fixed;
     top:${top};
     left:${left};

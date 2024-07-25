@@ -263,7 +263,7 @@ const contextmenuCustom = (e) => {
             icon: { name: '&#xe67a;', color: 'black', },
             name: '菜单1',
             callBack: () => { }
-        }
+        },
     ]
     // 生成 自定义右键菜单
     createContextMenu(styleCustom, menuList);
