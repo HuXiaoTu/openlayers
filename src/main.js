@@ -7,7 +7,7 @@ import './axios/mockJS/mock.js';
 const app = createApp(App);
 
 //  gbMap工具类 全局注册
-import gbMap from '@/commonTool/mapDrawHandle/core/global_map_tools.js';
+import gbMap from '@/commonTool/mapDrawHandle/core/gb_map.js';
 app.config.globalProperties.gbMap = gbMap;
 globalThis.gbMap = gbMap;
 

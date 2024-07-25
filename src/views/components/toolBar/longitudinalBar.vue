@@ -41,7 +41,6 @@ import { onMounted, ref } from 'vue';
 
 import { getCurrentMap } from '../../../commonTool/mapDrawHandle/core/mapTool';
 import { clearMapDraw } from '../../../commonTool/mapDrawHandle/core/LayerTool';
-import { viewAnimation } from '../../../commonTool/mapDrawHandle/core/ViewTool';
 import { currentProjCodefromLonLat } from '../../../commonTool/mapDrawHandle/core/turf';
 import { watchDomChange } from '../../../commonTool/commonUtil/domHandle.js';
 export default {
@@ -49,7 +48,8 @@ export default {
         let heightContent = ref(0);
         // 回到中心
         let goZoom = () => {
-            let { flyTo } = viewAnimation({ center: currentProjCodefromLonLat(gbMap.mapConfig.center) });
+            let view = getCurrentMap().getView();
+            let { flyTo } = gbMap.viewAnimation({ view, center: currentProjCodefromLonLat(gbMap.mapConfig.center) });
             flyTo()
         }
         // 清空绘制数据
