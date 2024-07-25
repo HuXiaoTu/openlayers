@@ -7,6 +7,7 @@
  * 
  */
 export const watchDomChange = ({ targetNode, callback, childList = true }) => {
+    if (!targetNode) return;
     // 观察器的配置（需要观察什么变动）
     const config = { childList };
     // 创建一个观察器实例并传入回调函数
@@ -74,6 +75,15 @@ export function createContextMenu(styleCustom, menuList = []) {
         height:30px;
         align-items:center;
         cursor:pointer;`
+
+        // 某行 - 点击触发
+        contRow.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.info('>>>> ws >>> 🐌💬 点击了某行', ele);
+        }
+
+        // 某行 - 移入&&移出 样式
         contRow.onmouseenter = (e) => e.target.style.backgroundColor = '#ccc';
         contRow.onmouseleave = (e) => e.target.style.backgroundColor = '#fff';
 

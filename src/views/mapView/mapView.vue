@@ -8,13 +8,14 @@
         ></div>
     </div>
 </template>
-<script>
-import { initialMap } from '../../commonTool/mapDrawHandle/core/mapTool.js';
-export default {
-    mounted() {
-        let map = initialMap('mapBox');
-    }
-}
+<script setup>
+import { onMounted } from 'vue';
+import { mountMap } from '../../commonTool/mapDrawHandle/core/mapTool.js';
+
+onMounted(() => {
+    // 挂载map
+    mountMap('mapBox');
+})
 </script>
 <style lang="scss">
 .mapShowIndexCont {

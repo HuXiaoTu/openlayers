@@ -131,19 +131,37 @@ const fullScreenControl = ({ target }) => {
     })
 }
 
-
-/**
- * 初始化地图 
+/** 挂载 map
  * @param {*} target 目标Dom
  */
-export const initialMap = (target = '') => {
+export const mountMap = (target = null) => {
     if (!target) return;
 
     // 组件 按钮追加到指定 dom
     let targetDom = document.querySelector('.longitudinalBarCenter');
     // 经纬度显示 追加到 指定 dom
-    let targetDomLonLat = document.querySelector(`#${target}`)
+    let targetDomLonLat = document.querySelector(`#${target}`);
 
+    // 挂载map
+    map.setTarget(target);
+    console.info('>>>> ws >>> 🐌💬 地图挂载完成');
+
+    // 插件注册
+    let controls = [overviewMapControl(), mousePositionControl({ target: targetDomLonLat }), scaleLineControl(), fullScreenControl({ target: targetDom })]
+    controls.forEach(ele => map.addControl(ele));
+
+    // 交互事件注册
+    let interactions = [dragRotateAndZoomControl(), interactions_methods()]
+    interactions.forEach(ele => map.addInteraction(ele));
+
+    // map相关事件注册
+    map_methods(map);
+}
+
+/**
+ * 初始化地图 
+ */
+export const initialMap = () => {
     view = new View({
         projection: 'EPSG:3857',                                // 投影类型
         center: fromLonLat(mapConfig.center, 'EPSG:3857'),      // 地图中心点经纬度
@@ -156,16 +174,9 @@ export const initialMap = (target = '') => {
     map = new Map({
         layers: [dataOverlayGroup, dataOverlayDisplayGroup, dataOverlayDrawGroup],
         view,
-        target,
-        // 插件注册
-        controls: defaultControls().extend([overviewMapControl(), mousePositionControl({ target: targetDomLonLat }), scaleLineControl(), fullScreenControl({ target: targetDom })]),
-        // 交互事件注册
-        interactions: defaultInteractions().extend([dragRotateAndZoomControl(), interactions_methods()]),
     });
-    // map相关事件注册
-    map_methods(map);
 
-    console.info('>>>> ws >>> 🐌💬 地图加载完成了',);
+    console.info('>>>> ws >>> 🐌💬 地图初始化完成，未挂载');
     return map;
 }
 
