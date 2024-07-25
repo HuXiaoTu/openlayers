@@ -3,19 +3,34 @@
     <div class="longitudinalBar">
         <!-- 按钮区域 -->
         <div class="longitudinalBarCenter">
-            <span class="longitudinalBarCenterBtn" title="回到中心" @click="goZoom">
+            <span
+                class="longitudinalBarCenterBtn"
+                title="回到中心"
+                @click="goZoom"
+            >
                 <home-filled />
             </span>
-            <span class="longitudinalBarCenterBtn" title="清空数据" @click="clearLayer">
+            <span
+                class="longitudinalBarCenterBtn"
+                title="清空数据"
+                @click="clearLayer"
+            >
                 <refresh-left />
             </span>
-            <span class="longitudinalBarCenterBtn" title="获取图片" @click="getCanvasMap">
+            <span
+                class="longitudinalBarCenterBtn"
+                title="获取图片"
+                @click="getCanvasMap"
+            >
                 <Picture />
             </span>
             <!-- 有底图 动态追加到下面的按钮 -->
         </div>
         <!-- 伸缩按钮 -->
-        <div class="longitudinalBarShow" @click="showList">
+        <div
+            class="longitudinalBarShow"
+            @click="showList"
+        >
             <Menu />
         </div>
     </div>
@@ -28,14 +43,13 @@ import { getCurrentMap } from '../../../commonTool/mapDrawHandle/core/mapTool';
 import { clearMapDraw } from '../../../commonTool/mapDrawHandle/core/LayerTool';
 import { viewAnimation } from '../../../commonTool/mapDrawHandle/core/ViewTool';
 import { currentProjCodefromLonLat } from '../../../commonTool/mapDrawHandle/core/turf';
-import { mapConfig } from '../../../commonTool/commonConfig/config';
 import { watchDomChange } from '../../../commonTool/commonUtil/domHandle.js';
 export default {
     setup() {
         let heightContent = ref(0);
         // 回到中心
         let goZoom = () => {
-            let { flyTo } = viewAnimation({ center: currentProjCodefromLonLat(mapConfig.center) });
+            let { flyTo } = viewAnimation({ center: currentProjCodefromLonLat(gbMap.mapConfig.center) });
             flyTo()
         }
         // 清空绘制数据
@@ -85,10 +99,12 @@ export default {
 .longitudinalBar {
     width: 35px;
     padding: 3px;
+
     .longitudinalBarCenter {
         width: 100%;
         overflow: hidden;
         transition: all 0.3s linear;
+
         .longitudinalBarCenterBtn {
             display: inline-block;
             width: 100%;
@@ -99,11 +115,13 @@ export default {
             background-color: rgba(0, 60, 136, 0.5);
             color: #ffffff;
             border-radius: 3px;
+
             &:hover {
                 background-color: rgba(0, 60, 136, 0.7);
             }
         }
     }
+
     .longitudinalBarShow {
         width: 100%;
         text-align: center;

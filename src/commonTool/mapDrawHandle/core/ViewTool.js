@@ -1,11 +1,10 @@
 import { easeIn as AnimationIn, easeOut as AnimationOut } from 'ol/easing';
 import { getCurrentView } from "./mapTool.js";
-import { mapConfig } from "../../commonConfig/config.js";
 
 /**
 * @description view 动画效果
 */
-export const viewAnimation = ({ center, cb = null, zoom = mapConfig.zoom, duration = 2000 }) => {
+export const viewAnimation = ({ center, cb = null, zoom = gbMap.mapConfig.zoom, duration = 2000 }) => {
     // 动画执行程序
     let AnimationView = (fun) => {
         getCurrentView().animate(

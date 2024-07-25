@@ -13,7 +13,6 @@ import MousePosition from "ol/control/MousePosition.js";
 import { DragRotateAndZoom, defaults as defaultInteractions, } from 'ol/interaction';
 import { FullScreen, ScaleLine, defaults as defaultControls, OverviewMap } from 'ol/control';
 
-import { mapConfig } from '../../commonConfig/config.js';
 import { InteractionsMethods, MapMethods } from './map_methods.js';
 
 
@@ -133,6 +132,7 @@ const fullScreenControl = ({ target }) => {
 // 初始化---------------------------------------------------------------
 // 初始化地图
 export const initialMap = () => {
+    let mapConfig = gbMap.mapConfig;
     view = new View({
         projection: 'EPSG:3857',                                // 投影类型
         center: fromLonLat(mapConfig.center, 'EPSG:3857'),      // 地图中心点经纬度
