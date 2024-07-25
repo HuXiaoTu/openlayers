@@ -4,7 +4,12 @@ import App from './App.vue'
 // mockJS 数据拦截
 import './axios/mockJS/mock.js';
 
-const app = createApp(App)
+const app = createApp(App);
+
+//  gbMap工具类 全局注册
+import gbMap from '@/commonTool/mapDrawHandle/core/global_map_tools.js';
+app.config.globalProperties.gbMap = gbMap;
+globalThis.gbMap = gbMap;
 
 // 注册路由
 import router from './route/route.js';

@@ -31,7 +31,6 @@ export const VectorLayerDraw = new VectorLayer({
     renderMode: "image",
     source: new VectorSource({ wrapX: false }),
 });
-
 // 地图图层 XYZ
 export const XYZlayer = new TileLayer({
     source: new XYZ({
@@ -131,6 +130,26 @@ const fullScreenControl = ({ target }) => {
     })
 }
 
+// 初始化---------------------------------------------------------------
+// 初始化地图
+export const initialMap = () => {
+    view = new View({
+        projection: 'EPSG:3857',                                // 投影类型
+        center: fromLonLat(mapConfig.center, 'EPSG:3857'),      // 地图中心点经纬度
+        zoom: mapConfig.zoom,                                   // 地图缩放级别         
+        minZoom: mapConfig.minZoom,
+        // extent: fromLonLat(boundingExtent([[0, 180], [180, -180]]), 'EPSG:3857'),    // 设置投影范围
+        // extent: transformExtent([-30, -70, 180, 180], 'EPSG:4326', 'EPSG:3857'),    // 设置投影范围
+    })
+
+    map = new Map({
+        layers: [dataOverlayGroup, dataOverlayDisplayGroup, dataOverlayDrawGroup],
+        view,
+    });
+
+    console.info('>>>> ws >>> 🐌💬 地图初始化完成，未挂载');
+    return map;
+}
 /** 挂载 map
  * @param {*} target 目标Dom
  */
@@ -158,29 +177,8 @@ export const mountMap = (target = null) => {
     map_methods(map);
 }
 
-/**
- * 初始化地图 
- */
-export const initialMap = () => {
-    view = new View({
-        projection: 'EPSG:3857',                                // 投影类型
-        center: fromLonLat(mapConfig.center, 'EPSG:3857'),      // 地图中心点经纬度
-        zoom: mapConfig.zoom,                                   // 地图缩放级别         
-        minZoom: mapConfig.minZoom,
-        // extent: fromLonLat(boundingExtent([[0, 180], [180, -180]]), 'EPSG:3857'),    // 设置投影范围
-        // extent: transformExtent([-30, -70, 180, 180], 'EPSG:4326', 'EPSG:3857'),    // 设置投影范围
-    })
 
-    map = new Map({
-        layers: [dataOverlayGroup, dataOverlayDisplayGroup, dataOverlayDrawGroup],
-        view,
-    });
-
-    console.info('>>>> ws >>> 🐌💬 地图初始化完成，未挂载');
-    return map;
-}
-
-
+// 公共函数---------------------------------------------------------------
 /**
  *获取当前map 
  */
@@ -197,9 +195,6 @@ export const getCurrentView = () => {
 * @description 获取当前地图投影code
 * @returns 当前地图投影code
 */
-export function getCurrentProjCode(map = null) {
-    if (map) {
-        return map.getView().getProjection().getCode();
-    }
-    return getCurrentMap().getView().getProjection().getCode();
+export function getCurrentProjCode(mapObj = getCurrentMap()) {
+    if (mapObj) mapObj?.getView()?.getProjection()?.getCode();
 }

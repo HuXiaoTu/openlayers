@@ -79,25 +79,24 @@ export class MapMethods {
     }
     // 右键菜单注册
     contextMenu() {
-        console.info('>>>> ws >>> 🐌💬 我注册了地图点击事件',)
+        console.info('>>>> ws >>> 🐌💬 地图交互相关事件注册完成',)
         this.map.getViewport().addEventListener('contextmenu', (e) => {
             event.preventDefault(); // 阻止默认的右键菜单
 
-            // let coordinate = this.map.getEventCoordinate(e);
             let pixel = this.map.getEventPixel(e);
             const feature = this.map.forEachFeatureAtPixel(pixel, feature => feature);
             if (!feature) return;
 
             let { clientY, clientX } = e;
-            let styleCustom = {
-                left: clientX + 'px',
-                top: clientY + 'px',
-            }
+            let styleCustom = { left: clientX + 'px', top: clientY + 'px' };
             let menuList = [
                 {
-                    icon: { name: '&#xe67a;', color: 'black', },
-                    name: '菜单1',
-                    callBack: () => { }
+                    icon: { name: '&#xe624;', color: 'black', },
+                    name: '删除',
+                    callBack: () => {
+                        console.info('>>>> ws >>> 🐌💬 点击了删除按钮',)
+                        gbMap.delFeatureToMap(this.map, feature);
+                    }
                 }
             ]
             // 生成 自定义右键菜单
@@ -105,7 +104,7 @@ export class MapMethods {
         })
     }
 }
-
+// 删除某个feature
 
 
 

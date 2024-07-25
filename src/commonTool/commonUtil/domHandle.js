@@ -43,8 +43,7 @@ export function createContextMenu(styleCustom, menuList = []) {
     let { left, top, backgroundColor, color, fontSize } = styleCustom;
     if (left === undefined || top === undefined) return new Error('自定义弹框样式:left、right 为必填项！');
     // 始终保持 只有一个 弹框
-    let oldPop = document.querySelector('.customContextMenu');
-    if (oldPop) document.body.removeChild(oldPop);
+    closeContextMenu();
 
     // 外壳
     let dom = document.createElement('div');
@@ -80,7 +79,15 @@ export function createContextMenu(styleCustom, menuList = []) {
         contRow.onclick = (e) => {
             e.preventDefault();
             e.stopPropagation();
-            console.info('>>>> ws >>> 🐌💬 点击了某行', ele);
+            if (typeof callBack === 'function') {
+                let flg = callBack();
+                // 如果 回调中 返回false,将阻止关闭menu菜单
+                if (flg === false) return;
+                else closeContextMenu();
+            } else {
+                console.warn('未设置点击回调，不执行任何操作！');
+                closeContextMenu();
+            }
         }
 
         // 某行 - 移入&&移出 样式
@@ -111,7 +118,11 @@ export function createContextMenu(styleCustom, menuList = []) {
     window.onclick = null;
     window.onclick = () => {
         // 始终保持 只有一个 弹框
-        let oldPop = document.querySelector('.customContextMenu');
-        if (oldPop) document.body.removeChild(oldPop);
+        closeContextMenu();
     }
+}
+// 关闭 自定义右键菜单
+export function closeContextMenu() {
+    let oldPop = document.querySelector('.customContextMenu');
+    if (oldPop) document.body.removeChild(oldPop);
 }
