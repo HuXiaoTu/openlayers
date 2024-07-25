@@ -53,7 +53,7 @@ const themeList = computed(() => {
 
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
 .themeSetting {
     .layout-mode-item {
         width: 70px;

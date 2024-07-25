@@ -20,7 +20,7 @@ import { useAppStore } from '../../../../store/app';
 const useApp = useAppStore();
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
 .themeSetting {
     .layout-mode-item {
         width: 70px;

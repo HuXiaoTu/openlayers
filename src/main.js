@@ -32,5 +32,9 @@ import * as icons from '@element-plus/icons-vue';
 import 'element-plus/dist/index.css';
 Object.keys(icons).forEach(key => app.component(key, icons[key]));
 
+// 样式文件 导入
+import 'ol/ol.css';
+import './assets/commonCss/index.scss';
+
 // 挂载
 app.mount('#app')

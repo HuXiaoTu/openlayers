@@ -17,7 +17,7 @@ onMounted(() => {
     mountMap('mapBox');
 })
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .mapShowIndexCont {
     width: 100%;
     height: 100%;
