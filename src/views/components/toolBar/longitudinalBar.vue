@@ -39,10 +39,9 @@
 import { saveAs } from 'file-saver';
 import { onMounted, ref } from 'vue';
 
-import { getCurrentMap } from '../../../commonTool/mapDrawHandle/core/mapTool';
-import { clearMapDraw } from '../../../commonTool/mapDrawHandle/core/LayerTool';
-import { currentProjCodefromLonLat } from '../../../commonTool/mapDrawHandle/core/turf';
-import { watchDomChange } from '../../../commonTool/commonUtil/domHandle.js';
+import { getActiveLayer, getCurrentMap } from '@/commonTool/mapDrawHandle/core/mapTool';
+import { currentProjCodefromLonLat } from '@/commonTool/mapDrawHandle/core/turf';
+import { watchDomChange } from '@/commonTool/commonUtil/domHandle.js';
 export default {
     setup() {
         let heightContent = ref(0);
@@ -54,7 +53,9 @@ export default {
         }
         // 清空绘制数据
         let clearLayer = () => {
-            clearMapDraw()
+            getActiveLayer().getSource().clear();
+            // 由于设置完成后,可能地图会不更新,需要手动触发地图更新
+            getCurrentMap().render();
         }
         // 获取图片
         let getCanvasMap = () => {

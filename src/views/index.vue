@@ -19,6 +19,10 @@
             <div class="mapContainer">
                 <MapView></MapView>
             </div>
+            <!-- 图层管理 -->
+            <div class="layerManagementBox">
+                <LayerManagement></LayerManagement>
+            </div>
         </div>
 
         <!-- 全局设置 -->
@@ -30,6 +34,7 @@ import MapView from './mapView/mapView.vue';
 import TopMenu from './components/topMenu/top.vue';
 import LongitudinalBar from './components/toolBar/longitudinalBar.vue';
 import GlobalSetting from './components/settings/globalSetting/index.vue';
+import LayerManagement from './components/layer_management/layer_management.vue';
 import { watchDomChange } from '../commonTool/commonUtil/domHandle.js';
 
 import { onMounted } from 'vue';
@@ -87,6 +92,12 @@ onMounted(() => {
             .mapContainer {
                 width: 100%;
                 height: 100%;
+            }
+
+            .layerManagementBox {
+                position: fixed;
+                right: 0px;
+                bottom: 40px;
             }
         }
     }

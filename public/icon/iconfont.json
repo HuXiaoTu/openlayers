@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "6329250",
+      "name": "新增图层",
+      "font_class": "xinzengtuceng",
+      "unicode": "e887",
+      "unicode_decimal": 59527
+    },
+    {
+      "icon_id": "35058152",
+      "name": "删除图层",
+      "font_class": "shanchutuceng",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
       "icon_id": "705686",
       "name": "删除",
       "font_class": "shanchu",

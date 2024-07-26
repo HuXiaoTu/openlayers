@@ -1,6 +1,6 @@
 import { ElMessage } from 'element-plus'
 
-import { VectorLayerShow } from '../../../commonTool/mapDrawHandle/core/mapTool.js';
+import { getActiveLayer } from '../../../commonTool/mapDrawHandle/core/mapTool.js';
 import windTemperature from '../../../commonTool/mapDrawHandle/drawTool/productList/windTemperature.js';
 import gridPoint from '../../../commonTool/mapDrawHandle/drawTool/productList/gridPoint.js';
 import colorBoard from '../../../commonTool/mapDrawHandle/drawTool/productList/colorBoard.js';
@@ -29,9 +29,9 @@ export const drawFeatures = ({ type, data }) => {
     let features = new handel().setData(data).initFeatures();
     // 如果为 异步 需要 then 接受
     if (!Array.isArray(features)) features.then(res => {
-        VectorLayerShow.getSource().addFeatures(res);
+        getActiveLayer().getSource().addFeatures(res);
         return;
     })
     // 当为 正常数据 数组时
-    VectorLayerShow.getSource().addFeatures(features);
+    getActiveLayer().getSource().addFeatures(features);
 }

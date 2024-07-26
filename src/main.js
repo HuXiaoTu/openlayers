@@ -6,7 +6,12 @@ import './axios/mockJS/mock.js';
 
 const app = createApp(App);
 
-//  gbMap工具类 全局注册
+// gbSa工具类 全局注册
+import gbSa from '@/commonTool/commonUtil/gb_sa.js';
+app.config.globalProperties.gbSa = gbSa;
+globalThis.gbSa = gbSa;
+
+// gbMap工具类 全局注册
 import gbMap from '@/commonTool/mapDrawHandle/core/gb_map.js';
 app.config.globalProperties.gbMap = gbMap;
 globalThis.gbMap = gbMap;

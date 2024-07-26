@@ -14,21 +14,24 @@ import { FullScreen, ScaleLine, defaults as defaultControls, OverviewMap } from 
 
 import { InteractionsMethods, MapMethods } from './map_methods.js';
 
+import { reactive, ref } from 'vue';
+
 
 let map = null;
 let view = null;
+// 当前激活图层
+let defaultLayer = VectorLayerData();
+let activeLayerId = ref(defaultLayer.ol_uid);
 
 // 图层------------------------------------------------------------------
-// 矢量图层(展示)
-export const VectorLayerShow = new VectorLayer({
-    renderMode: "image",
-    source: new VectorSource({ wrapX: false }),
-});
-// 矢量图层(绘制)
-export const VectorLayerDraw = new VectorLayer({
-    renderMode: "image",
-    source: new VectorSource({ wrapX: false }),
-});
+// 矢量图层
+function VectorLayerData(name = '') {
+    return new VectorLayer({
+        name,
+        renderMode: "image",
+        source: new VectorSource({ wrapX: false }),
+    });
+}
 // 地图图层 XYZ
 export const XYZlayer = new TileLayer({
     source: new XYZ({
@@ -51,23 +54,17 @@ export const OSMlayer = new TileLayer({
 
 // 图层组-----------------------------------------------------------------
 // 底图图层集合
-export const dataOverlayGroup = new LayerGroup({
-    groupName: "dataOverlayGroup",
+export const baseOverlayGroup = new LayerGroup({
+    groupName: "baseOverlayGroup",
     zIndex: 200,
     layers: [XYZlayer]
 });
-// 数据展示图层集合
-export const dataOverlayDisplayGroup = new LayerGroup({
-    groupName: "dataOverlayDisplayGroup",
-    zIndex: 200,
-    layers: [VectorLayerShow]
-});
 // 数据绘制图层集合
-export const dataOverlayDrawGroup = new LayerGroup({
-    groupName: "dataOverlayDrawGroup",
+export const dataOverlayGroup = reactive(new LayerGroup({
+    groupName: "dataOverlayGroup",
     zIndex: 300,
-    layers: [VectorLayerDraw]
-});
+    layers: [defaultLayer]
+}));
 
 // 地图插件---------------------------------------------------------------
 // 按住Shift+Drag以围绕其中心旋转和缩放地图
@@ -142,7 +139,7 @@ export const initialMap = () => {
     })
 
     map = new Map({
-        layers: [dataOverlayGroup, dataOverlayDisplayGroup, dataOverlayDrawGroup],
+        layers: [baseOverlayGroup, dataOverlayGroup],
         view,
     });
 
@@ -169,7 +166,8 @@ export const mountMap = (target = null) => {
     controls.forEach(ele => map.addControl(ele));
 
     // 交互事件注册
-    let interactions = [dragRotateAndZoomControl(), interactions_methods()]
+    let interactions = [dragRotateAndZoomControl(), interactions_methods()];
+    // let interactions = [dragRotateAndZoomControl()];
     interactions.forEach(ele => map.addInteraction(ele));
 
     // map相关事件注册
@@ -197,3 +195,36 @@ export const getCurrentView = () => {
 export function getCurrentProjCode(mapObj = getCurrentMap()) {
     if (mapObj) mapObj?.getView()?.getProjection()?.getCode();
 }
+
+/**
+ * 添加 图层
+ * @param {*} name 图层名称
+ */
+export const addLayer = (name = '') => {
+    let layer = VectorLayerData(name);
+    dataOverlayGroup.getLayers().getArray().push(layer);
+}
+// 删除 图层
+export const delLayer = (layer) => {
+    if (!layer) return;
+    if (layer.ol_uid === activeLayerId.value) return gbSa.error('无法删除当前激活图层');
+    let layers = dataOverlayGroup.getLayers().getArray();
+    let index = layers.findIndex(ele => ele.ol_uid === layer.ol_uid);
+    if (index !== -1) dataOverlayGroup.getLayers().getArray().splice(index, 1);
+    // 刷新地图
+    map.render();
+}
+
+// 设置指定图成为 激活图层
+export function setActiveLayerId(id) {
+    activeLayerId.value = id;
+    console.info('>>>> ws >>> 🐌💬 activeLayerId ', activeLayerId.value)
+}
+// 获取 激活图层
+export function getActiveLayer() {
+    let arr = dataOverlayGroup.getLayers().getArray();
+    let layer = arr.find(ele => ele.ol_uid === activeLayerId.value);
+    return layer;
+}
+
+export { activeLayerId }

@@ -9,10 +9,14 @@
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
     "axios": "^0.21.1",
+    "dayjs": "^1.11.12",
+    "deepcopy": "^2.1.0",
     "element-plus": "2.1.10",
     "file-saver": "^2.0.5",
+    "lodash": "^4.17.21",
     "ol": "^9.2.4",
     "pinia": "^2.0.23",
+    "qs": "^6.12.3",
     "vue": "^3.2.0",
     "vue-router": "^4.0.14"
   },
